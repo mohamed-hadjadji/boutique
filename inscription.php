@@ -1,7 +1,7 @@
 <?php
    session_start();
 
-  $connexion =  mysqli_connect("localhost","root","","boutique");
+  include("class.php");
   if (!isset($_SESSION["login"]))
   {
 
@@ -59,40 +59,19 @@
 
         if (isset($_POST['valider']))
        {
-            $login = $_POST['login'];
-            $mdp= password_hash($_POST["mdp1"], PASSWORD_DEFAULT, array('cost' => 12));
-          $prenom = $_POST['prenom'];
-          $nom =$_POST['nom'];
-          $adresse=$_POST['adresse'];
-          $email=$_POST['mail'];
-          $tele=$_POST['tele'];
+           $register = new user();
 
-            if ($_POST['mdp1']==$_POST['mdp2'])
-            {
-            $requet="SELECT* FROM utilisateurs WHERE login='".$login."'";
-            $query2=mysqli_query($connexion,$requet);
-            $resultat=mysqli_fetch_all($query2);
-            $trouve=false;
-            foreach ($resultat as $key => $value) 
-            {
-            if ($resultat[$key][1]==$_POST['login'])
-            {
-               $trouve=true;
-               echo "<p class='erreur'><b>Login déja existant!!</b></p>";
-            }
-           }
-           if ($trouve==false)
-           {
-            $sql = "INSERT INTO utilisateurs (login,prenom,nom,password,adresse,email,telephone)
-                VALUES ('$login','$prenom','$nom','$mdp','$adresse','$email','$tele')";
-            $query=mysqli_query($connexion,$sql);
-            header('location:connexion.php');
-            }
-           }
-           else
-           {
-              echo "<p class='erreur'><b>Les mots de passe doivent être identique!</b></p>";
-           }
+           $login = $_POST['login'];
+           $mdp= password_hash($_POST["mdp1"], PASSWORD_DEFAULT, array('cost' => 12));
+           $prenom = $_POST['prenom'];
+           $nom =$_POST['nom'];
+           $adresse=$_POST['adresse'];
+           $email=$_POST['mail'];
+           $tele=$_POST['tele'];
+
+           $register->register($login,$prenom,$nom,$mdp,$adresse,$email,$tele); 
+            
+           
         }
 
     ?> 
