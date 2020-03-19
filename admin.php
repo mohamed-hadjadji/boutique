@@ -1,6 +1,6 @@
 <?php
    session_start();
-
+  include("class.php");
    ?>
 
    <!DOCTYPE html>
@@ -46,7 +46,6 @@
                 <input type="submit" value="Création Article" name="submit">
         
         <?php
-    $connexion =  mysqli_connect("localhost","root","","boutique");
 
 if(isset($_POST["submit"])) {
 
@@ -54,10 +53,6 @@ $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
-  $requeteadmin="SELECT * FROM `utilisateurs` WHERE login='".$_SESSION['login']."'";
-  $queryadmin = mysqli_query( $connexion,$requeteadmin);
-  $resultat= mysqli_fetch_all($queryadmin);
 
     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
     if($check !== false) {
@@ -67,6 +62,7 @@ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
         echo "File is not an image.";
         $uploadOk = 0;
     }
+$produit = new article();
 
     $nomart = $_POST['titre'];
     $infoart=$_POST['info'];
@@ -74,14 +70,7 @@ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
     $catart = $_POST['catego'];
     $soucatart = $_POST['sous'];
    
- 
-    
-    $requete = "INSERT INTO produits (titre,info,prix,categorie,souscategorie,icon,id_utilisateur) VALUES ('$nomart','$infoart','$prixart','$catart','$soucatart','$target_file','".$resultat[0][0]."')";
-    $query = mysqli_query($connexion,$requete);
-
-    var_dump($requete);
-
-    
+$produit->produit($nomart,$infoart,$prixart,$catart,$soucatart,$target_file);    
  
 }
 

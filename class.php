@@ -47,6 +47,54 @@ class user
               echo "<p class='erreur'><b>Les mots de passe doivent être identique!</b></p>";
            }
 
+    }
+   public function connect($login, $password)
+   {
+   	 $connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
+
+   	 
+            
+    }
 }
+
+class article
+{
+
+  private $id = '';
+  public $nomart = '';
+  public $infoart = '';
+  public $prixart = '';
+  public $catart= '';
+  public $soucatart='';
+  public $target_file='';
+  public $iduser='';
+
+  public function produit($nomart,$infoart,$prixart,$catart,$soucatart,$target_file)
+  {
+    $connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
+    
+    $reponse = $connexion->query("SELECT* FROM produits WHERE titre='".$nomart."'");
+            $resultat2=$reponse->fetchAll();
+            $trouve=false;
+            foreach ($resultat2 as $key => $value) 
+            {
+            if ($resultat2[$key][1]==$_POST['titre'])
+            {
+               $trouve=true;
+               echo "<p class='erreur'><b>Produit déja existant!!</b></p>";
+            }
+           }
+           if ($trouve==false)
+           {
+            $requeteadmin = $connexion->query("SELECT * FROM utilisateurs WHERE login='".$_SESSION['login']."'");
+            $resultat=$requeteadmin->fetchAll();
+
+            $iduser =$resultat[0][0];
+
+            $requete = $connexion->query("INSERT INTO produits (titre,info,prix,categorie,souscategorie,icon,id_utilisateur) VALUES ('$nomart','$infoart','$prixart','$catart','$soucatart','$target_file','$iduser')");
+
+            echo "<p><b>Produit Créer</b></p>";
+           }
+  }
 }
 ?>
