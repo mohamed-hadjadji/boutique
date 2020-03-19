@@ -22,7 +22,7 @@
      ?>
     </header>
     <section class="">
-        <h1>Creation Produits</h1>
+        <h1>Création Produits</h1>
 
         <form method='POST' action='' enctype="multipart/form-data">
            
@@ -49,34 +49,79 @@
 
 if(isset($_POST["submit"])) {
 
-$target_dir = "uploads/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
-    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-    if($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
-        $uploadOk = 1;
-    } else {
-        echo "File is not an image.";
-        $uploadOk = 0;
-    }
 $produit = new article();
-
-    $nomart = $_POST['titre'];
-    $infoart=$_POST['info'];
-    $prixart = $_POST['prix'];
-    $catart = $_POST['catego'];
-    $soucatart = $_POST['sous'];
    
-$produit->produit($nomart,$infoart,$prixart,$catart,$soucatart,$target_file);    
+$produit->produit();    
  
 }
 
 ?>
-</form>
+      </form>
     </section>
+
+    <section class="">
+        <h1>Modifier Produits</h1>
+
+        <form method='POST' action='' enctype="multipart/form-data">
+           
+                <label>Produit a Modifier</label>
+                <input type="text" name='titre3'/>
+
+                <label>Nouveau Titre</label>
+                <input type="text" name='titre2'/>
+
+                <label>Ajouter des Informations</label>
+                <input type="text" name='info'/>
+                      
+                <label>Nouveau Prix</label>
+                <input type="text" name='prix2'/>
+
+                 <label>Nouvelle Catégorie</label>
+                <input type="text" name='catego'/>
+
+                 <label>Nouvelle Sous-catégorie</label>
+                <input type="text" name='sous'/>
+
+                 <label>Modifier l'image de produit</label>
+                <input type="file" name='fileToUpload'/>
+                <input type="submit" value="Modifier Article" name="modifier">
+        
+        <?php
+
+if(isset($_POST["modifier"])) {
+
+$moproduit = new article();
+   
+$moproduit->modifierproduit();    
+ 
+}
+
+?>
+       </form>
+    </section>
+
+    <section class="">
+      <h1>Modifier Produits</h1>
+
+      <form method="post" action="">
+          <label>Produit à Effacer</label></br>
+          <input type="text" name="titre4" required></br>
+          <input type="submit" value="Effacer Article" name="effacer"></br>
+
+           <?php
+
+    if(isset($_POST["effacer"])) {
+
+   $offproduit = new article();
+   
+   $offproduit->deleteproduit();    
+ 
+}
+
+?>
+     </form>
+   </section>
+
 
     <?php
   }
