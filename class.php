@@ -113,7 +113,17 @@ class article
             $requete = $connexion->query("INSERT INTO produits (titre,info,prix,categorie,souscategorie,icon,id_utilisateur) VALUES ('$nomart','$infoart','$prixart','$catart','$soucatart','$target_file','$iduser')");
 
             echo "<p><b>Produit Créer</b></p>";
-           }
+
+            $reponse2 = $connexion->query( "SELECT *FROM produits ORDER BY produits.id DESC");
+                $i=0;
+                foreach ($reponse2 as list($id,$nompro,$infopro,$prixpro,$categopro,$souscategopro,$iconpro,$idadmin)) 
+                {
+                  echo $nompro;
+                  echo "<img height=\"250\" src=\"$iconpro\">";
+                  echo $infopro;
+                  echo $prixpro."€";
+                }
+              }
   }
 
    public function modifierproduit()

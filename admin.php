@@ -20,7 +20,16 @@
      if(isset($_SESSION['login']) && $_SESSION['login']=="admin")
   {
      ?>
+     <form method='POST'>
+     <input type="submit" value="Création Article" name="formcr">
+     <input type="submit" value="Modifier Article" name="formmo">
+     <input type="submit" value="Effacer Article" name="formdel">
+   </form>
     </header>
+    <?php
+     if(isset($_POST['formcr']))
+     {
+    ?>
     <section class="">
         <h1>Création Produits</h1>
 
@@ -43,22 +52,22 @@
 
                  <label>Image de produit</label>
                 <input type="file" name='fileToUpload' required />
-                <input type="submit" value="Création Article" name="submit">
-        
-        <?php
-
-if(isset($_POST["submit"])) {
-
-$produit = new article();
-   
-$produit->produit();    
- 
-}
-
-?>
-      </form>
+                <input type="submit" value="Valider" name="submit">
+        </form>
     </section>
+     <?php
+     }
+      if(isset($_POST["submit"])) 
+      {
 
+         $produit = new article();
+         $produit->produit();    
+ 
+      }
+      
+  if(isset($_POST['formmo']))
+  {
+    ?>
     <section class="">
         <h1>Modifier Produits</h1>
 
@@ -84,46 +93,42 @@ $produit->produit();
 
                  <label>Modifier l'image de produit</label>
                 <input type="file" name='fileToUpload'/>
-                <input type="submit" value="Modifier Article" name="modifier">
-        
-        <?php
-
-if(isset($_POST["modifier"])) {
-
-$moproduit = new article();
-   
-$moproduit->modifierproduit();    
- 
-}
-
-?>
-       </form>
+                <input type="submit" value="Modifier" name="modifier">
+          </form>
     </section>
+        <?php
+   }
 
+   if(isset($_POST["modifier"])) 
+   {
+
+    $moproduit = new article();   
+    $moproduit->modifierproduit();    
+ 
+   }
+ 
+   if(isset($_POST['formdel']))
+   {
+  ?>
     <section class="">
       <h1>Modifier Produits</h1>
 
       <form method="post" action="">
           <label>Produit à Effacer</label></br>
           <input type="text" name="titre4" required></br>
-          <input type="submit" value="Effacer Article" name="effacer"></br>
-
-           <?php
-
-    if(isset($_POST["effacer"])) {
-
-   $offproduit = new article();
-   
-   $offproduit->deleteproduit();    
- 
-}
-
-?>
-     </form>
+          <input type="submit" value="Effacer" name="effacer"></br>
+      </form>
    </section>
+           <?php
+    }
 
+    if(isset($_POST["effacer"])) 
+    {
 
-    <?php
+     $offproduit = new article();
+     $offproduit->deleteproduit();    
+    }
+    
   }
   else
   {
