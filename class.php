@@ -114,15 +114,6 @@ class article
 
             echo "<p><b>Produit Créer</b></p>";
 
-            $reponse2 = $connexion->query( "SELECT *FROM produits ORDER BY produits.id DESC");
-                $i=0;
-                foreach ($reponse2 as list($id,$nompro,$infopro,$prixpro,$categopro,$souscategopro,$iconpro,$idadmin)) 
-                {
-                  echo $nompro;
-                  echo "<img height=\"250\" src=\"$iconpro\">";
-                  echo $infopro;
-                  echo $prixpro."€";
-                }
               }
   }
 

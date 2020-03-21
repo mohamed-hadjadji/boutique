@@ -27,19 +27,32 @@
    </form>
     </header>
     <?php
+            $connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
+            $reponse2 = $connexion->query( "SELECT *FROM produits ORDER BY produits.id DESC");
+                
+                foreach ($reponse2 as list($id,$nompro,$infopro,$prixpro,$categopro,$souscategopro,$iconpro,$idadmin)) 
+                {
+                  ?>
+                  <a href="produit.php?id=<?php echo $id ?>"><?php echo $nompro ?></a>
+                  <?php
+                  echo "<img height=\"250\" src=\"$iconpro\">";
+                  echo $infopro;
+                  echo $prixpro."€";
+                }
+
      if(isset($_POST['formcr']))
      {
     ?>
     <section class="">
         <h1>Création Produits</h1>
 
-        <form method='POST' action='' enctype="multipart/form-data">
+        <form method='POST' action='admin.php' enctype="multipart/form-data">
            
                 <label>Nom de produit</label>
                 <input type="text" name='titre' required />
 
                 <label>information sur produit</label>
-                <input type="text" name='info' required />
+                <textarea type="text" name='info' required></textarea> 
                       
                 <label>Prix de Vente</label>
                 <input type="text" name='prix' required />
@@ -61,7 +74,8 @@
       {
 
          $produit = new article();
-         $produit->produit();    
+         $produit->produit();  
+
  
       }
       
@@ -80,7 +94,7 @@
                 <input type="text" name='titre2'/>
 
                 <label>Ajouter des Informations</label>
-                <input type="text" name='info'/>
+                <textarea type="text" name='info'></textarea>
                       
                 <label>Nouveau Prix</label>
                 <input type="text" name='prix2'/>
