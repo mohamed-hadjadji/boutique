@@ -25,7 +25,7 @@
 
            $requete = $connexion->query("SELECT * FROM produits WHERE id = $id");
 
-           foreach ($requete as list($idpro, $titrepro, $infopro, $prixpro, $categopro, $souspro, $iconpro,$idadmin)) 
+           foreach ($requete as list($idpro, $titrepro, $infopro, $prixpro, $categopro, $souspro,$qtt, $iconpro, $idadmin)) 
            {
            	    echo $titrepro;
                 echo "<img height=\"500\" src=\"$iconpro\">";

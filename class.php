@@ -83,6 +83,7 @@ class article
     $prixart = $_POST['prix'];
     $catart = $_POST['catego'];
     $soucatart = $_POST['sous'];
+    $qtt = $_POST['qtt'];
     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
     if($check !== false) {
         echo "File is an image - " . $check["mime"] . ".";
@@ -110,28 +111,34 @@ class article
 
             $iduser =$resultat[0][0];
 
-            $requete = $connexion->query("INSERT INTO produits (titre,info,prix,categorie,souscategorie,icon,id_utilisateur) VALUES ('$nomart','$infoart','$prixart','$catart','$soucatart','$target_file','$iduser')");
+            $requete = $connexion->query("INSERT INTO produits (titre,info,prix,categorie,souscategorie,quantite,icon,id_utilisateur) VALUES ('$nomart','$infoart','$prixart','$catart','$soucatart','$qtt','$target_file','$iduser')");
 
             echo "<p><b>Produit Créer</b></p>";
 
               }
   }
 
-   public function modifierproduit()
+   public function modifiernomproduit()
   {
     $connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
 
+    $titre3 = $_POST['titre3'];
+    $titre2 = $_POST['titre2'];
+    $info = $_POST['info'];
+    
+    $requetemod = $connexion->query("UPDATE produits SET titre= '$titre2',info= '$info' WHERE titre = '$titre3'");
+    echo "<p><b>Produit Modifier</b></p>";
+  }
+   public function modifiericonproduit()
+   {
+    $connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
+    
+    $titre3 = $_POST['titre3'];
     $target_dir = "uploads/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
-    $titre3 = $_POST['titre3'];
-    $titre2 = $_POST['titre2'];
-    $prix2 = $_POST['prix2'];
-    $info = $_POST['info'];
-    $categorie = $_POST['catego'];
-    $souscategorie = $_POST['sous'];
     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
     if($check !== false) {
         echo "File is an image - " . $check["mime"] . ".";
@@ -140,10 +147,35 @@ class article
         echo "File is not an image.";
         $uploadOk = 0;
     }
-    
-    $requetemod = $connexion->query("UPDATE produits SET titre= '$titre2',info= '$info',prix= '$prix2',categorie='$categorie',souscategorie='$souscategorie',icon= '$target_file' WHERE titre = '$titre3'");
+
+    $requetemod = $connexion->query("UPDATE produits SET icon= '$target_file' WHERE titre = '$titre3'");
     echo "<p><b>Produit Modifier</b></p>";
-  }
+   }
+
+   public function modifierprixproduit()
+   {
+    $connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
+    
+    $titre3 = $_POST['titre3'];
+    $prix2 = $_POST['prix2'];
+    $qtt2 = $_POST['qtt2'];
+
+    $requetemod = $connexion->query("UPDATE produits SET prix= '$prix2',quantite='$qtt2' WHERE titre = '$titre3'");
+    echo "<p><b>Produit Modifier</b></p>";
+   }
+
+   public function modifiercatproduit()
+   {
+    $connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
+    
+    $titre3 = $_POST['titre3'];
+    $categorie = $_POST['catego'];
+    $souscategorie = $_POST['sous'];
+
+    $requetemod = $connexion->query("UPDATE produits SET categorie='$categorie',souscategorie='$souscategorie' WHERE titre = '$titre3'");
+    echo "<p><b>Produit Modifier</b></p>";
+   }
+
 
   public function deleteproduit()
   {

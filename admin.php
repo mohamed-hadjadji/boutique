@@ -30,7 +30,7 @@
             $connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
             $reponse2 = $connexion->query( "SELECT *FROM produits ORDER BY produits.id DESC");
                 
-                foreach ($reponse2 as list($id,$nompro,$infopro,$prixpro,$categopro,$souscategopro,$iconpro,$idadmin)) 
+                foreach ($reponse2 as list($id,$nompro,$infopro,$prixpro,$categopro,$souscategopro,$qtt,$iconpro,$idadmin)) 
                 {
                   ?>
                   <a href="produit.php?id=<?php echo $id ?>"><?php echo $nompro ?></a>
@@ -46,7 +46,7 @@
     <section class="">
         <h1>Création Produits</h1>
 
-        <form method='POST' action='admin.php' enctype="multipart/form-data">
+        <form method='POST' action='' enctype="multipart/form-data">
            
                 <label>Nom de produit</label>
                 <input type="text" name='titre' required />
@@ -63,8 +63,12 @@
                  <label>Sous-catégorie</label>
                 <input type="text" name='sous' required />
 
+                <label>Quantité</label>
+                <input type="text" name='qtt' required />
+
                  <label>Image de produit</label>
                 <input type="file" name='fileToUpload' required />
+
                 <input type="submit" value="Valider" name="submit">
         </form>
     </section>
@@ -84,8 +88,19 @@
     ?>
     <section class="">
         <h1>Modifier Produits</h1>
+         <form method='POST'>
+            <input type="submit" value="Modifier nom & info" name="modifnom">
+            <input type="submit" value="Modifier image" name="modifpic">
+            <input type="submit" value="Modifier quantité & prix" name="modifprix">
+            <input type="submit" value="Modifier catégorie & s-catégorie" name="modifcat">
+       </form>
+      <?php
+  }
+      if(isset($_POST['modifnom']))
+      {    
+       ?>
 
-        <form method='POST' action='' enctype="multipart/form-data">
+        <form method='POST' action=''>
            
                 <label>Produit a Modifier</label>
                 <input type="text" name='titre3'/>
@@ -95,29 +110,102 @@
 
                 <label>Ajouter des Informations</label>
                 <textarea type="text" name='info'></textarea>
-                      
+            <input type="submit" value="Modifier" name="modifiernom">
+
+            <input type="submit" value="Modifier image" name="modifpic">
+            <input type="submit" value="Modifier quantité & prix" name="modifprix">
+            <input type="submit" value="Modifier catégorie & s-catégorie" name="modifcat">
+        </form>
+      <?php
+      }
+      if(isset($_POST['modifpic']))
+      {
+      ?>
+        <form method='POST' action='' enctype="multipart/form-data">
+           
+                <label>Produit a Modifier</label>
+                <input type="text" name='titre3'/>              
+                <label>Modifier l'image de produit</label>
+                <input type="file" name='fileToUpload'/>
+                <input type="submit" value="Modifier" name="modifierpic">
+
+                <input type="submit" value="Modifier nom & info" name="modifnom">
+                <input type="submit" value="Modifier quantité & prix" name="modifprix">
+                <input type="submit" value="Modifier catégorie & s-catégorie" name="modifcat">
+        </form>
+        <?php
+      }
+      if(isset($_POST['modifprix']))
+      {
+      ?>
+        <form method='POST' action=''>
+           
+                <label>Produit a Modifier</label>
+                <input type="text" name='titre3'/> 
                 <label>Nouveau Prix</label>
                 <input type="text" name='prix2'/>
+                <label>Ajouter quantité</label>
+                <input type="text" name='qtt2'/>
+                <input type="submit" value="Modifier" name="modifierprix">
 
-                 <label>Nouvelle Catégorie</label>
+                <input type="submit" value="Modifier nom & info" name="modifnom">
+                <input type="submit" value="Modifier image" name="modifpic">
+                <input type="submit" value="Modifier catégorie & s-catégorie" name="modifcat">
+        </form>
+       <?php
+      }
+      if(isset($_POST['modifcat']))
+      {
+       ?>
+        <form method='POST' action=''>
+           
+                <label>Produit a Modifier</label>
+                <input type="text" name='titre3'/>        
+                <label>Nouvelle Catégorie</label>
                 <input type="text" name='catego'/>
+                <label>Nouvelle Sous-catégorie</label>
+                <input type="text" name='sous'/>                
+                <input type="submit" value="Modifier" name="modifiercateg">
 
-                 <label>Nouvelle Sous-catégorie</label>
-                <input type="text" name='sous'/>
-
-                 <label>Modifier l'image de produit</label>
-                <input type="file" name='fileToUpload'/>
-                <input type="submit" value="Modifier" name="modifier">
+                <input type="submit" value="Modifier nom & info" name="modifnom">
+                <input type="submit" value="Modifier image" name="modifpic">
+                <input type="submit" value="Modifier quantité & prix" name="modifprix">
+                
           </form>
     </section>
         <?php
-   }
+      }
+   
 
-   if(isset($_POST["modifier"])) 
+   if(isset($_POST["modifiernom"])) 
    {
 
     $moproduit = new article();   
-    $moproduit->modifierproduit();    
+    $moproduit->modifiernomproduit();    
+ 
+   }
+
+   if(isset($_POST["modifierpic"])) 
+   {
+
+    $moproduit = new article();   
+    $moproduit->modifiericonproduit();    
+ 
+   }
+
+   if(isset($_POST["modifierprix"])) 
+   {
+
+    $moproduit = new article();   
+    $moproduit->modifierprixproduit();    
+ 
+   }
+
+    if(isset($_POST["modifiercateg"])) 
+   {
+
+    $moproduit = new article();   
+    $moproduit->modifiercatproduit();    
  
    }
  
