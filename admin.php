@@ -176,37 +176,26 @@
         <?php
       }
    
+   $moproduit = new article();
 
    if(isset($_POST["modifiernom"])) 
    {
-
-    $moproduit = new article();   
     $moproduit->modifiernomproduit();    
- 
    }
 
    if(isset($_POST["modifierpic"])) 
-   {
-
-    $moproduit = new article();   
+   { 
     $moproduit->modifiericonproduit();    
- 
    }
 
    if(isset($_POST["modifierprix"])) 
    {
-
-    $moproduit = new article();   
     $moproduit->modifierprixproduit();    
- 
    }
 
     if(isset($_POST["modifiercateg"])) 
-   {
-
-    $moproduit = new article();   
-    $moproduit->modifiercatproduit();    
- 
+   {  
+    $moproduit->modifiercatproduit();     
    }
  
    if(isset($_POST['formdel']))
