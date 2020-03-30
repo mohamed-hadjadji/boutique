@@ -106,12 +106,8 @@ class article
            }
            if ($trouve==false)
            {
-            $requeteadmin = $connexion->query("SELECT * FROM utilisateurs WHERE login='".$_SESSION['login']."'");
-            $resultat=$requeteadmin->fetchAll();
-
-            $iduser =$resultat[0][0];
-
-            $requete = $connexion->query("INSERT INTO produits (titre,info,prix,categorie,souscategorie,quantite,icon,id_utilisateur) VALUES ('$nomart','$infoart','$prixart','$catart','$soucatart','$qtt','$target_file','$iduser')");
+            
+            $requete = $connexion->query("INSERT INTO produits (titre,info,prix,categorie,souscategorie,quantite,icon,date) VALUES ('$nomart','$infoart','$prixart','$catart','$soucatart','$qtt','$target_file', NOW())");
 
             echo "<p><b>Produit Créer</b></p>";
 

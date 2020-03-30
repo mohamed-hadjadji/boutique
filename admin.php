@@ -30,7 +30,7 @@
             $connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
             $reponse2 = $connexion->query( "SELECT *FROM produits ORDER BY produits.id DESC");
                 
-                foreach ($reponse2 as list($id,$nompro,$infopro,$prixpro,$categopro,$souscategopro,$qtt,$iconpro,$idadmin)) 
+                foreach ($reponse2 as list($id,$nompro,$infopro,$prixpro,$categopro,$souscategopro,$qtt,$iconpro,$datepro)) 
                 {
                   ?>
                   <a href="produit.php?id=<?php echo $id ?>"><?php echo $nompro ?></a>
@@ -55,14 +55,26 @@
                 <textarea type="text" name='info' required></textarea> 
                       
                 <label>Prix de Vente</label>
-                <input type="text" name='prix' required />
+                <input type = " number " min = " 0.00 " max = " 10000.00 " step = " 0.01 " name='prix' required />
 
-                 <label>Catégorie</label>
-                <input type="text" name='catego' required />
+                <label>Catégorie</label>
+                <select type="text" name='catego' required />
+                    <option></option>
+                    <option>Téléphone</option>
+                    <option>Accessoire</option>               
+                </select>
 
                  <label>Sous-catégorie</label>
-                <input type="text" name='sous' required />
-
+                <select type="text" name='sous' required />
+                    <option></option>
+                    <option>SAMSUNG</option>                   
+                    <option>APPLE iPhone</option>
+                    <option>HUAWEI</option>
+                    <option>OPPO</option>
+                    <option>WIKO</option>
+                    <option>XIAOMI</option>
+                    <option>SONY Xperia</option>
+                </select>
                 <label>Quantité</label>
                 <input type="text" name='qtt' required />
 
@@ -143,7 +155,7 @@
                 <label>Produit a Modifier</label>
                 <input type="text" name='titre3'/> 
                 <label>Nouveau Prix</label>
-                <input type="text" name='prix2'/>
+                <input type = " number " min = " 0.00 " max = " 10000.00 " step = " 0.01 " name='prix2'/>
                 <label>Ajouter quantité</label>
                 <input type="text" name='qtt2'/>
                 <input type="submit" value="Modifier" name="modifierprix">
@@ -162,9 +174,23 @@
                 <label>Produit a Modifier</label>
                 <input type="text" name='titre3'/>        
                 <label>Nouvelle Catégorie</label>
-                <input type="text" name='catego'/>
+                <select type="text" name='catego' required />
+                    <option></option>
+                    <option>Téléphone</option>
+                    <option>Accessoire</option>               
+                </select>
+
                 <label>Nouvelle Sous-catégorie</label>
-                <input type="text" name='sous'/>                
+                <select type="text" name='sous' required />
+                    <option></option>
+                    <option>SAMSUNG</option>                   
+                    <option>APPLE iPhone</option>
+                    <option>HUAWEI</option>
+                    <option>OPPO</option>
+                    <option>WIKO</option>
+                    <option>XIAOMI</option>
+                    <option>SONY Xperia</option>
+                </select>                
                 <input type="submit" value="Modifier" name="modifiercateg">
 
                 <input type="submit" value="Modifier nom & info" name="modifnom">
