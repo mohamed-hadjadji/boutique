@@ -37,6 +37,7 @@
                 {
             
                 $_SESSION['login'] = $_POST['login'];
+                $_SESSION['id'] = $reponse4[0];
                
                 header('Location: index.php');
                 }

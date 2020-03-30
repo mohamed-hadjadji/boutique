@@ -1,5 +1,7 @@
 <?php
    session_start();
+   include('fonction.php');
+
   //include("class.php");
    ?>
 
@@ -31,8 +33,28 @@
                 echo "<img height=\"500\" src=\"$iconpro\">";
                 echo $infopro;
                 echo $prixpro."€";
+
            }
         	?>
+          <form method="post">
+             <input type="number" name="quant" value="1" min="1" max="<?= $qtt ?>">
+             <input type="submit" name="panier" value="ajouter au pannier">
+          </form>
+          <?php
+            if(isset($_POST['panier']))
+            {
+              
+              if(isset($_SESSION['id']))
+              {
+                sql("INSERT INTO pannier(id_user,id_prod,quantite) VALUES ('".$_SESSION['id']."','".$_GET['id']."','".$_POST['quant']."' )");
+              }
+              else
+              { ?>
+                <p>vous devez étre <a href="connexion.php">connécté</a> pour pouvoir ajouter un produit </p>
+     <?php    }
+            }
+          ?>
+        </section>
         </section>
         <section>
         	<h2>Votre Avis sur le Produit</h2>
@@ -57,7 +79,7 @@
             var_dump($requeteavi);
           }     
         ?>
-        </section>
+
 
     </body>
 </html>

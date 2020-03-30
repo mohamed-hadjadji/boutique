@@ -1,6 +1,12 @@
 <?php
-    session_start();
-   
+   session_start();
+   include('fonction.php');
+   $dprod=sql("SELECT * FROM `produits` ORDER BY id LIMIT 5");
+   $dtel=sql("SELECT * FROM `produits` WHERE souscategorie = 'smartphone' ORDER BY id LIMIT 5");
+   $dsamsung=sql("SELECT * FROM `produits` WHERE categorie ='Samsung' ORDER BY id LIMIT 5 ");
+   $dhuawei=sql("SELECT * FROM `produits` WHERE categorie ='HUAWEI' ORDER BY id LIMIT 5 ");
+   $darnaque=sql("SELECT * FROM `produits` WHERE categorie ='APPLE' ORDER BY id LIMIT 5 ");
+   var_dump($dprod);
 ?>
 <html>
 <head>
@@ -34,4 +40,5 @@
        }
     }
     ?>
+
     </main>
