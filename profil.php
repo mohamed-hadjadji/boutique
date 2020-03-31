@@ -1,7 +1,7 @@
 <?php
    session_start();
 
-  //include("class.php");
+  include("class.php");
   
    ?>
 
@@ -22,13 +22,13 @@
             <?php      
               if (isset($_SESSION['login']))
               {
-                  $connexion = mysqli_connect("localhost","root","","boutique");
 
-		          $requete = "SELECT * FROM utilisateurs WHERE login='".$_SESSION['login']."'";
-		          $req = mysqli_query($connexion, $requete);
-		          $data = mysqli_fetch_assoc($req);
- 
-              
+              $connexion = mysqli_connect("localhost","root","","boutique");
+
+		      $requete = "SELECT * FROM utilisateurs WHERE login='".$_SESSION['login']."'";
+		      $req = mysqli_query($connexion, $requete);
+		      $data = mysqli_fetch_assoc($req); 
+                             
               $user= $_SESSION['login'];
 			?>
 		    <article class="">
@@ -63,22 +63,13 @@
 				
 			</form>
 			<?php
-               if (isset($_POST['Modifier']))
-			    {
-
-
-			      $login = $_POST['login'];
-			      $passe = password_hash($_POST["mdp"], PASSWORD_DEFAULT, array('cost' => 12));
-			      $adresse = $_POST['adresse'];
-			      $email = $_POST['mail'];
-			      $tele = $_POST['tele'];
-
-			      $requete2 = "UPDATE utilisateurs SET login = '$login', password = '$passe', adresse = '$adresse', email = '$email', telephone = '$tele' WHERE login = '".$_SESSION['login']."'";
-			      $query2=mysqli_query($connexion,$requete2);
-			      session_unset();
-			      header("location:connexion.php?reconnect=1");
-			    }
+             if (isset($_POST['Modifier']))
+                    {         
+		              $modifier = new user();
+		              $modifier->update();
+		            }
 			?>
+			
 		</section>
 
 		    <?php

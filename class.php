@@ -39,7 +39,7 @@ class user
            {
             $sql = $connexion->query( "INSERT INTO utilisateurs (login,prenom,nom,password,adresse,email,telephone)
                 VALUES ('$login','$prenom','$nom','$mdp','$adresse','$email','$tele')");      
-           
+            header('location:connexion.php');
             }
            }
            else
@@ -84,6 +84,21 @@ class user
             }
         }
             
+    }
+    public function update()
+    {
+
+            $login = $_POST['login'];
+            $passe = password_hash($_POST["mdp"], PASSWORD_DEFAULT, array('cost' => 12));
+            $adresse = $_POST['adresse'];
+            $email = $_POST['mail'];
+            $tele = $_POST['tele'];
+
+            $requete2 = "UPDATE utilisateurs SET login = '$login', password = '$passe', adresse = '$adresse', email = '$email', telephone = '$tele' WHERE login = '".$_SESSION['login']."'";
+            $query2=mysqli_query($connexion,$requete2);
+            session_unset();
+            header("location:connexion.php?reconnect=1");
+          
     }
 }
 
