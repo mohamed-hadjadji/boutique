@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="">
 </head>
 
-<body class="topic">
+<body class="">
     <header>
 
     <?php 
