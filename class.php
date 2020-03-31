@@ -48,11 +48,41 @@ class user
            }
 
     }
-   public function connect($login, $password)
+   public function connect()
    {
-   	 $connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
+   	 $connexion =  mysqli_connect("localhost","root","","boutique");
 
-   	 
+   	 if(isset($_POST['login']) && isset($_POST['password']))
+        {
+             
+            $login = mysqli_real_escape_string($connexion,htmlspecialchars($_POST['login']));
+            $password = mysqli_real_escape_string($connexion,htmlspecialchars($_POST['password']));
+
+            if($login !== "" && $password !== "")
+            {
+                $requete = "SELECT count(*) FROM utilisateurs where
+                login = '".$login."' ";
+                $exec_requete = mysqli_query($connexion,$requete);
+                $reponse      = mysqli_fetch_array($exec_requete);
+                $count = $reponse['count(*)'];
+
+                $requete4 = "SELECT * FROM utilisateurs WHERE login='".$login."'";
+                $exec_requete4 = mysqli_query($connexion,$requete4);
+                $reponse4 = mysqli_fetch_array($exec_requete4);
+
+                if( $count!=0 && $_SESSION['login'] !== "" && password_verify($password, $reponse4[4]) )
+                {
+            
+                $_SESSION['login'] = $_POST['login'];
+               
+                header('Location: index.php');
+                }
+                else
+                {
+                header('Location: connexion.php?erreur=1'); // utilisateur ou mot de passe incorrect
+                }
+            }
+        }
             
     }
 }
