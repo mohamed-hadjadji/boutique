@@ -46,7 +46,16 @@
               
               if(isset($_SESSION['id']))
               {
-                sql("INSERT INTO pannier(id_user,id_prod,quantite) VALUES ('".$_SESSION['id']."','".$_GET['id']."','".$_POST['quant']."' )");
+                if($_POST['quant']<=$qtt && $_POST['quant']>0)
+                {
+                    sql("INSERT INTO pannier(id_user,id_prod,quantite) VALUES ('".$_SESSION['id']."','".$_GET['id']."','".$_POST['quant']."' )");
+                    echo $_POST['quant']." article(s) dans votre panier";
+                }
+                else
+                {
+                  echo'bien essayé hackerman';
+                }
+                
               }
               else
               { ?>
