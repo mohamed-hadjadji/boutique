@@ -1,5 +1,13 @@
 <?php
    session_start();
+                   if(isset($_GET['deconnexion']))
+                { 
+                   if($_GET['deconnexion']==true)
+                   {  
+                      session_unset();
+                      header("location:index.php");
+                   }
+                }
    include('fonction.php');
    $dprod=sql("SELECT * FROM `produits` ORDER BY id LIMIT 5");
    $dtel=sql("SELECT * FROM `produits` WHERE souscategorie = 'smartphone' ORDER BY id LIMIT 5");
