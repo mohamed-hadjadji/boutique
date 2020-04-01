@@ -2,9 +2,7 @@
    session_start();
 
   include("class.php");
-  if (!isset($_SESSION["login"]))
-  {
-
+  
    ?>
 
    <!DOCTYPE html>
@@ -17,10 +15,15 @@
     <link rel="stylesheet" href="">
 </head>
 
-<body class="topic">
+<body class="">
     <header>
 
-    <?php include 'bar-nav.php' ?>
+    <?php 
+    include ('bar-nav.php');
+     if (!isset($_SESSION["login"]))
+  { 
+
+    ?>
 
     </header>
     

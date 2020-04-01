@@ -85,10 +85,21 @@
             $requeteavi = $connexion->query("INSERT INTO avis(commentaire, id_utilisateur, id_produit, date) VALUES ('$avis','$iduser','$id',NOW())");
             
             header("location:produit.php?id=$id");
-            var_dump($requeteavi);
+         
           }     
         ?>
+        <section>
+        	<?php
+        	$requetemes = $connexion->query("SELECT avis.id, commentaire, avis.date, utilisateurs.id, login, produits.id, titre FROM avis INNER JOIN utilisateurs ON id_utilisateur= utilisateurs.id INNER JOIN produits ON id_produit = produits.id WHERE id_produit = $id ORDER BY avis.id DESC");
 
+        	 foreach ($requetemes as list($idavis, $msg, $date, $iduser, $user, $idpro, $nompro))
+        	 {
+        	 	echo $user;
+        	 	echo $msg;
+        	 	echo $date;
+        	 }
+        	?> 
+        </section>
 
     </body>
 </html>
