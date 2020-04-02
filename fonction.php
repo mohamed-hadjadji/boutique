@@ -46,4 +46,44 @@
 		return sql($ql);
 		//echo "SELECT * FROM `produits` WHERE titre LIKE '%x%' OR info LIKE '%x%' OR categorie LIKE '%x%' OR souscategorie LIKE '%x%'";
 	}
+	function option($tri)
+	{	$ql="SELECT * FROM produits ";
+		if ($tri['catego']=="Aucune"&&$tri['sous']=="AUCUN"&&empty($tri['pr-sup'])&&empty($tri['pr-inf'])) 
+		{
+			
+		}
+		else
+		{
+			$ql.="WHERE ";
+			if($tri['catego']=="Aucune")
+			{
+
+			}
+			else
+			{
+				$ql.=" categorie ='".$tri['catego']."'";
+			}
+
+			if($tri['sous']=="AUCUN")
+			{
+
+			}
+			else
+			{	
+				echo "||".substr($ql, -6)."||";
+				if(substr($ql, -6)=="WHERE ")
+				{
+					$ql.=" souscategorie ='".$tri['sous']."'";
+				}
+				else
+				{
+					$ql.=" && souscategorie ='".$tri['sous']."'";
+				}	
+				
+			}
+		}
+		
+		var_dump($tri);
+		echo $ql;
+	}
 ?>
