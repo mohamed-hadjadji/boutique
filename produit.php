@@ -47,9 +47,20 @@
               if(isset($_SESSION['id']))
               {
                 if($_POST['quant']<=$qtt && $_POST['quant']>0)
-                {
-                    sql("INSERT INTO pannier(id_user,id_prod,quantite) VALUES ('".$_SESSION['id']."','".$_GET['id']."','".$_POST['quant']."' )");
-                    echo $_POST['quant']." article(s) dans votre panier";
+                { echo "SELECT quantite FROM panier WHERE id_prod=".$_GET['id']." && id_user=".$_SESSION['id'].";";  
+                  $testprod=sql("SELECT quantite FROM pannier WHERE id_prod=".$_GET['id']." && id_user=".$_SESSION['id'].";");
+                    var_dump($testprod);
+                    if(empty($testprod))
+                    {
+                      sql("INSERT INTO pannier(id_user,id_prod,quantite) VALUES ('".$_SESSION['id']."','".$_GET['id']."','".$_POST['quant']."' )");
+                    }
+                    else
+                    {
+                      sql("UPDATE pannier SET quantite= ".($_POST['quant']+$testprod[0][0])." WHERE id_prod=".$_GET['id']." && id_user=".$_SESSION['id']."; ");
+                      $_POST['quant']+=$testprod[0][0];
+                    }
+                    
+                    echo "Vous avez ".$_POST['quant']." copie de cette article dans votre panier";
                 }
                 else
                 {
