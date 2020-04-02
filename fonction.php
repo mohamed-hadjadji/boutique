@@ -81,9 +81,63 @@
 				}	
 				
 			}
+
+
+			if (empty($tri['pr-inf'])) 
+			{
+
+			}
+			else
+			{
+				if(substr($ql, -6)=="WHERE ")
+				{
+					$ql.=" prix <= ".$tri['pr-inf'];
+				}
+				else
+				{
+					$ql.=" && prix <= ".$tri['pr-inf'];
+				}
+			}
+
+			if (empty($tri['pr-sup'])) 
+			{
+				
+			}
+			else
+			{
+				if(substr($ql, -6)=="WHERE ")
+				{
+					$ql.=" prix >= ".$tri['pr-sup'];
+				}
+				else
+				{
+					$ql.=" && prix >= ".$tri['pr-sup'];
+				}
+			}
+
+		}
+
+		switch ($tri['trie']) 
+		{
+			case 'Aucun':
+				$ql.=" ORDER BY RAND()";
+				break;
+			case 'Prix croissant':
+				$ql.=" ORDER BY prix DESC";
+				break;
+			case 'Prix décroissant':
+				$ql.=" ORDER BY prix ASC";
+				break;
+			case 'Plus récents':
+				$ql.=" ORDER BY id DESC";
+				break;
+			
+			default:
+				
+				break;
 		}
 		
-		var_dump($tri);
 		echo $ql;
+		return sql($ql);
 	}
 ?>

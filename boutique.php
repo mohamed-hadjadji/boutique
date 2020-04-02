@@ -14,7 +14,6 @@
     {
       //echo"plein";
       $res=recherche($_POST['req']);
-      var_dump($res);
     }
   }
   else
@@ -22,8 +21,14 @@
     if(isset($_POST['option']))
     {
       $res=option($_POST);
+      
     }
-  }  
+    else
+    {
+       $res=sql("SELECT * FROM produits ORDER BY RAND()");
+    }
+  } 
+ var_dump($res);
    ?>
 
 <!DOCTYPE html>
@@ -67,15 +72,15 @@
                 </select>
                <label>Trie :</label>
                <select type="text" name='trie' required />
-                    <option>Aucune</option>
+                    <option>Aucun</option>
                     <option>Prix croissant</option>
                     <option>Prix décroissant</option>
                     <option>Plus récents</option>               
                 </select>
                 <label>Prix supérieur à :</label>
-                  <input type="number" name="pr-sup" min="0">
+                  <input type="number" name="pr-sup"  min="0">
                 <label>Prix inférieur à :</label>
-                  <input type="number" name="pr-inf" min="0">
+                  <input type="number" name="pr-inf"  min="0">
                <input type="submit" name="option">
             </form>
           </div>
