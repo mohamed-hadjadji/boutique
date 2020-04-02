@@ -21,24 +21,27 @@
 		foreach ($tabrech as $t) 
 		{
 
-			if(empty($t)||$t=="/"||$t=="$"||$t=="+"||$t=="-"||$t=="*"||$t==";"||$t=="%"||$t=="!"||$t=="_")
-			{
-				echo "nop";
-			}
+			if(empty($t)||$t=="/"||$t=="$"||$t=="+"||$t=="-"||$t=="*"||$t==";"||$t=="%"||$t=="!"||$t=="_"||$t==" ")
+			{}
 			else
 			{
-				var_dump($t);
 				$ql.="titre LIKE '%".$t."%' OR info LIKE '%".$t."%' OR categorie LIKE '%".$t."%' OR souscategorie LIKE '%".$t."%'";
+				if ($i==$der) 
+				{
+					$ql.=";";
+				}
+				else
+				{
+					$ql.=" OR ";
+				}
 			}
-			if ($i==$der) 
-			{
-				$ql.=" ;";
-			}
-			else
-			{
-				$ql.=" OR ";
-			}
+			
 			$i++;
+		}
+		$rest = substr($ql, -3);
+		if($rest=="OR ")
+		{
+			$ql=substr($ql, 0, -3);
 		}
 		return sql($ql);
 		//echo "SELECT * FROM `produits` WHERE titre LIKE '%x%' OR info LIKE '%x%' OR categorie LIKE '%x%' OR souscategorie LIKE '%x%'";
