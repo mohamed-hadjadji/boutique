@@ -10,10 +10,8 @@
                 }
    include('fonction.php');
    $dprod=sql("SELECT * FROM `produits` ORDER BY id LIMIT 5");
-   $dtel=sql("SELECT * FROM `produits` WHERE souscategorie = 'smartphone' ORDER BY id LIMIT 5");
-   $dsamsung=sql("SELECT * FROM `produits` WHERE categorie ='Samsung' ORDER BY id LIMIT 5 ");
-   $dhuawei=sql("SELECT * FROM `produits` WHERE categorie ='HUAWEI' ORDER BY id LIMIT 5 ");
-   $darnaque=sql("SELECT * FROM `produits` WHERE categorie ='APPLE' ORDER BY id LIMIT 5 ");
+   $dtel=sql("SELECT * FROM `produits` WHERE categorie = 'Téléphone' ORDER BY id LIMIT 5 ");
+   $dacc=sql("SELECT * FROM `produits` WHERE categorie ='Accessoire' ORDER BY id LIMIT 5 ");
   // var_dump($dprod);
 ?>
 <html>
@@ -48,5 +46,63 @@
        }
     }
     ?>
-
+    <section>
+      <h>bienvenu sur ...</h>
+      <p>texte presentatife</p>
+    </section>
+    <article>
+      <h1>dernier produits :</h1>
+      <section>
+      <?php
+      foreach ($dprod as $p) 
+      {
+     ?>
+      <div>
+        <b><?=$p[1]?></b>
+        <img src="<?=$p[7]?>">
+        <p>Prix : <?=$p[3]?>€</p>
+        <a href="produit.php?id=<?=$p[0]?>">voir plus</a>
+      </div>
+     <?php   
+      }
+      ?>
+     </section>
+    </article>
+    <article>
+      <h1>dernier telephone:</h1>
+      <section>
+      <?php
+      foreach ($dtel as $t) 
+      {
+     ?>
+      <div>
+        <b><?=$t[1]?></b>
+        <img src="<?=$t[7]?>">
+        <p>Prix : <?=$t[3]?>€</p>
+        <a href="produit.php?id=<?=$t[0]?>">voir plus</a>
+      </div>
+     <?php   
+      }
+      ?>
+     </section>
+    </article>
+    <article>
+      <h1>dernier accessoire :</h1>
+      <section>
+      <?php
+      foreach ($dacc as $a) 
+      {
+     ?>
+      <div>
+        <b><?=$a[1]?></b>
+        <img src="<?=$a[7]?>">
+        <p>Prix : <?=$a[3]?>€</p>
+        <a href="produit.php?id=<?=$a[0]?>">voir plus</a>
+      </div>
+     <?php   
+      }
+      ?>
+     </section>
+    </article>
+    
     </main>

@@ -47,9 +47,8 @@
               if(isset($_SESSION['id']))
               {
                 if($_POST['quant']<=$qtt && $_POST['quant']>0)
-                { echo "SELECT quantite FROM panier WHERE id_prod=".$_GET['id']." && id_user=".$_SESSION['id'].";";  
+                { 
                   $testprod=sql("SELECT quantite FROM pannier WHERE id_prod=".$_GET['id']." && id_user=".$_SESSION['id'].";");
-                    var_dump($testprod);
                     if(empty($testprod))
                     {
                       sql("INSERT INTO pannier(id_user,id_prod,quantite) VALUES ('".$_SESSION['id']."','".$_GET['id']."','".$_POST['quant']."' )");

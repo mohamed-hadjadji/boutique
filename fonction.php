@@ -137,7 +137,7 @@
 				break;
 		}
 		
-		echo $ql;
+		
 		return sql($ql);
 	}
 ?>
