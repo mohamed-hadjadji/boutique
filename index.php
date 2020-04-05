@@ -14,7 +14,7 @@
    $dsamsung=sql("SELECT * FROM `produits` WHERE categorie ='Samsung' ORDER BY id LIMIT 5 ");
    $dhuawei=sql("SELECT * FROM `produits` WHERE categorie ='HUAWEI' ORDER BY id LIMIT 5 ");
    $darnaque=sql("SELECT * FROM `produits` WHERE categorie ='APPLE' ORDER BY id LIMIT 5 ");
-   var_dump($dprod);
+  // var_dump($dprod);
 ?>
 <html>
 <head>

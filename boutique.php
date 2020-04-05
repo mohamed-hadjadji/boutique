@@ -28,7 +28,21 @@
        $res=sql("SELECT * FROM produits ORDER BY RAND()");
     }
   } 
- var_dump($res);
+  if(isset($_POST['panier'])&&isset($_SESSION['id'])) 
+  {
+      $testprod=sql("SELECT quantite FROM pannier WHERE id_prod=".$_POST['panier']." && id_user=".$_SESSION['id'].";");
+                   
+                    if(empty($testprod))
+                    {
+                      sql("INSERT INTO pannier(id_user,id_prod,quantite) VALUES ('".$_SESSION['id']."','".$_POST['panier']."','1' )");
+                      $testprod[0][0]=1;
+                    }
+                    else
+                    {
+                      sql("UPDATE pannier SET quantite= ".(1+$testprod[0][0])." WHERE id_prod=".$_POST['panier']." && id_user=".$_SESSION['id']."; ");
+                      $testprod[0][0]++;
+                    }
+  }
    ?>
 
 <!DOCTYPE html>
@@ -84,8 +98,39 @@
                <input type="submit" name="option">
             </form>
           </div>
-          <section >
-            
+          <section id="res-bout">
+            <?php
+              foreach ($res as $r) 
+              {
+              ?>
+              <div class="prod-bout">
+                <h1 class="titre-prod" ><?=$r[1]?></h1>
+                <img src="<?=$r[7]?>">
+                <p>Description:<br><?=$r[2]?></p>
+                <h>prix: <?=$r[3]?>€</h>
+                <a href="produit.php?id=<?=$r[0]?>">voir plus</a>
+                <?php
+                  if(isset($_SESSION['id']))
+                  {
+                    ?>
+                    <form method="post">
+                      <button type="submit" name="panier" value="<?=$r[0]?>">ajouter au pannier</button>
+                    </form>
+
+                  <?php
+                    if(isset($testprod[0][0])&&$r[0]==$_POST['panier']) 
+                    {
+                      ?>
+                      <b> <?=$testprod[0][0]?> dans votre pannier</b>
+               <?php
+                    }
+                  }
+                ?>
+
+              </div>
+              <?php  
+              }
+            ?>
           </section>
         </main>
     </body>
