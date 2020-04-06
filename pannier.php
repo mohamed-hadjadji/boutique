@@ -58,7 +58,7 @@
             <p>votre pannier est vide</p>
           <?php }
          ?> 
-         
+         <a href="">validation du pannier</a>
          <!-- simulation de paiment!-->
         </main>
     </body>
