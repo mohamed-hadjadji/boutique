@@ -58,7 +58,42 @@
             <p>votre pannier est vide</p>
           <?php }
          ?> 
-         <a href="">validation du pannier</a>
+         <form>
+    <legend>Informations CB</legend>
+    <ul>
+      <li>
+          <legend>Type de carte bancaire</legend>
+          <ul>
+            <li>
+              <input id=visa name=type_de_carte type=radio>
+              <label for=visa>VISA</label>
+            </li>
+            <li>
+              <input id=amex name=type_de_carte type=radio>
+              <label for=amex>AmEx</label>
+            </li>
+            <li>
+              <input id=mastercard name=type_de_carte type=radio>
+              <label for=mastercard>Mastercard</label>
+            </li>
+          </ul>
+        
+            </li>
+            <li>
+              <label for=numero_de_carte>N° de carte</label>
+              <input id=numero_de_carte name=numero_de_carte type=number required>
+            </li>
+            <li>
+              <label for=securite>Code sécurité</label>
+              <input id=securite name=securite type=number required>
+            </li>
+            <li>
+                <label for=nom_porteur>Nom du porteur</label>
+                <input id=nom_porteur name=nom_porteur type=text placeholder="Même nom que sur la carte" required>
+            </li>
+            </ul>
+            <a href="">validation du pannier</a>
+          </form>
          <!-- simulation de paiment!-->
         </main>
     </body>
