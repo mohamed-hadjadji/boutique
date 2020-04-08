@@ -11,7 +11,7 @@ else
 {
 	if(isset($_POST['type_de_carte'])&&isset($_POST['numero_de_carte'])&&isset($_POST['securite'])&&isset($_POST['nom_porteur']))
 	 {
-	 	$pan=sql("SELECT id_prod,pannier.quantite,prix,prix*pannier.quantite as total FROM `pannier` INNER JOIN produits ON pannier.id_prod=produits.id  WHERE id_user=".$_SESSION['id']." && valider=0");
+	 	$pan=sql("SELECT id_prod,pannier.quantite,prix,prix*pannier.quantite as total ,produits.quantite FROM `pannier` INNER JOIN produits ON pannier.id_prod=produits.id  WHERE id_user=".$_SESSION['id']." && valider=0");
 	 	if(!empty($pan))
 	 	{
 	 		$pantotal=0;
@@ -23,6 +23,7 @@ else
             $pantotal+=$p[3];
             $json.="{\"id\": $p[0],\"quantite\":  $p[1],\"prix\":$p[2],\"total\": $p[3]}";
             //requette pour les stock
+            sql("UPDATE `produits` SET `quantite` = '".($p[4]-$p[1])."' WHERE `produits`.`id` = ".$p[0].";");
             if($i!=$tailpan-1)
             {
             	$json.=",";
