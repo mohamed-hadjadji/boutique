@@ -1,14 +1,13 @@
 <?php
    session_start();
    include('fonction.php');
+   include("class.php");
    if(isset($_POST['supan']))
    {
     sql("DELETE FROM `pannier` WHERE id_user=".$_SESSION['id']." && id_prod=".$_POST['supan']."");
    }
    $pannier=sql("SELECT id_prod,SUM(pannier.quantite),titre,prix,icon FROM `pannier` INNER JOIN `produits` ON id_prod=produits.id WHERE id_user=".$_SESSION['id']." GROUP BY id_prod");
-   
-   var_dump($pannier);
-  //include("class.php");
+   //var_dump($pannier);
    ?>
 
 <!DOCTYPE html>
@@ -51,50 +50,50 @@
           </div>
           <?php       
            }
-           ?><h1>total du pannier: <?=$pantotal?>€</h1><?php
+           ?><h1>total du pannier: <?=$pantotal?>€</h1>
+                <form method="post" action="paiment.php">
+                  <legend>Informations CB</legend>
+                    <ul>
+                      <li>
+                        <legend>Type de carte bancaire</legend>
+                        <ul>
+                          <li>
+                            <input id=visa name=type_de_carte type=radio>
+                            <label for=visa>VISA</label>
+                          </li>
+                          <li>
+                            <input id=amex name=type_de_carte type=radio>
+                            <label for=amex>AmEx</label>
+                          </li>
+                          <li>
+                            <input id=mastercard name=type_de_carte type=radio>
+                            <label for=mastercard>Mastercard</label>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                         <label for=numero_de_carte>N° de carte</label>
+                         <input id=numero_de_carte name=numero_de_carte type=number required>
+                      </li>
+                      <li>
+                         <label for=securite>Code sécurité</label>
+                         <input id=securite name=securite type=number required>
+                      </li>
+                      <li>
+                         <label for=nom_porteur>Nom du porteur</label>
+                         <input id=nom_porteur name=nom_porteur type=text placeholder="Même nom que sur la carte" required>
+                      </li>
+                    </ul>
+                    <input type="submit" name="validation du pannier">
+          </form>
+         <!-- simulation de paiment!-->
+<?php
           }
           else
           {?>
             <p>votre pannier est vide</p>
           <?php }
          ?> 
-         <form>
-    <legend>Informations CB</legend>
-    <ul>
-      <li>
-          <legend>Type de carte bancaire</legend>
-          <ul>
-            <li>
-              <input id=visa name=type_de_carte type=radio>
-              <label for=visa>VISA</label>
-            </li>
-            <li>
-              <input id=amex name=type_de_carte type=radio>
-              <label for=amex>AmEx</label>
-            </li>
-            <li>
-              <input id=mastercard name=type_de_carte type=radio>
-              <label for=mastercard>Mastercard</label>
-            </li>
-          </ul>
-        
-            </li>
-            <li>
-              <label for=numero_de_carte>N° de carte</label>
-              <input id=numero_de_carte name=numero_de_carte type=number required>
-            </li>
-            <li>
-              <label for=securite>Code sécurité</label>
-              <input id=securite name=securite type=number required>
-            </li>
-            <li>
-                <label for=nom_porteur>Nom du porteur</label>
-                <input id=nom_porteur name=nom_porteur type=text placeholder="Même nom que sur la carte" required>
-            </li>
-            </ul>
-            <a href="">validation du pannier</a>
-          </form>
-         <!-- simulation de paiment!-->
         </main>
     </body>
 </html>
