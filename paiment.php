@@ -33,6 +33,7 @@ else
            $json.="]";
 	 	   sql("INSERT INTO livraison (id_user,cmd,total )VALUES (".$_SESSION['id'].", '".$json."',$pantotal)");
 	 	   sql("UPDATE `pannier` SET `valider` = '1' WHERE id_user=".$_SESSION['id']." && valider=0");
+	 	  // mail( "etienne.kher@laplateforme.io" , "Sujet" , "Contenu du message" );
 	 	   $msg="yes";
 
 	 	}
@@ -67,20 +68,21 @@ else
     	else
     	{
     		?>
-    		<meta http-equiv="refresh" content="10;URL=paiment.php?msg=<?=$msg?>">
+    		<meta http-equiv="refresh" content="3;URL=paiment.php?msg=<?=$msg?>">
     		<?php
     	}
     ?>
     <title>Interface de paiment</title>
 </head>
-	<body class="">
+	<body class="paiment">
 		<?php
     	if(isset($_GET['msg']))
     	{
     		if($_GET['msg']=="yes")
     		{
     		?>
-    		validé
+    		<p id="endchargement">Comande validé : un mail de confirmation vous à été envoyé</p> 
+    		<a href="index.php">revenire à l'acceuil </a> 		
     		<?php
     		}
     		else
@@ -91,7 +93,7 @@ else
     	else
     	{
     		?>
-    		validation en cours
+    		<p id="chargement">verification en cours ...</p>
     		<?php
     	}
     ?>
