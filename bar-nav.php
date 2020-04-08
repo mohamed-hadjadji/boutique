@@ -10,6 +10,12 @@
     <li class=""><a href="boutique.php">boutique</a></li>
     <li class=""><a href="connexion.php">Connexion</a></li>
     <li class=""><a href="inscription.php">Inscription</a></li>
+    <li>
+      <form method="post" action="boutique.php" id="recherche bar-nav">
+              <input type="text" name="req">
+              <input type="submit" name="rech">
+      </form>
+    </li>
     
   
 </nav>
@@ -30,7 +36,13 @@
         <li class=""><a href="boutique.php">boutique</a></li>
         <li class=""><a href="profil.php">Profil</a></li>
         <li class=""><a href="admin.php">Administrateur</a></li>
-        <li class=""><a href="index.php?deconnexion=true">Déconnexion</a>      
+        <li class=""><a href="index.php?deconnexion=true">Déconnexion</a>
+        <li>
+          <form method="post" action="boutique.php" id="recherche bar-nav">
+              <input type="text" name="req">
+              <input type="submit" name="rech">
+          </form>
+    </li>      
       
     </nav>
  
@@ -45,6 +57,12 @@
          <li class=""><a href="boutique.php">boutique</a></li>
         <li class="menu-itemc"><a href="profil.php">Profil</a></li>
         <li class="menu-itemc"><a href="index.php?deconnexion=true">Déconnexion</a>
+        <li>
+          <form method="post" action="boutique.php" id="recherche bar-nav">
+              <input type="text" name="req">
+              <input type="submit" name="rech">
+          </form>
+        </li>
      
     
     </nav>
