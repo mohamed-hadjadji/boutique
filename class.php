@@ -74,6 +74,7 @@ class user
                 {
             
                 $_SESSION['login'] = $_POST['login'];
+                $_SESSION['id'] = $reponse4[0];
                
                 header('Location: index.php');
                 }
@@ -146,14 +147,16 @@ class article
             if ($resultat2[$key][1]==$_POST['titre'])
             {
                $trouve=true;
-               echo "<p class='erreur'><b>Produit déja existant!!</b></p>";
+               echo "<p class='erreur'><b>Produit existe déja!!</b></p>";
             }
            }
            if ($trouve==false)
            {
             
             $requete = $connexion->query("INSERT INTO produits (titre,info,prix,categorie,souscategorie,quantite,icon,date) VALUES ('$nomart','$infoart','$prixart','$catart','$soucatart','$qtt','$target_file', NOW())");
-
+            
+            header("location:admin.php");
+           
             echo "<p><b>Produit Créer</b></p>";
 
               }

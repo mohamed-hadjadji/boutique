@@ -1,0 +1,184 @@
+/*page admin*/
+
+.bodia{
+	background:url("img/bleu-ciel.jpg")top left/100% 100% ;
+	background-attachment:fixed;
+}
+
+#commande{
+	display: flex;
+	justify-content: center;
+}
+
+.button{
+	margin: 50px;
+}
+
+.button input[type=submit] {
+    background-color: #3E5173;
+    color: #F3DA74;
+    padding: 14px 20px;
+    font-family: 'Géorgie';
+    font-size: 24px;
+    width: 300px;
+    border: none;
+    border-radius: 10px; 
+    cursor: pointer;
+    margin: 20px;
+    margin-left: 100px;
+ 
+}
+.button input[type=submit]:hover {
+    background-color: #869fa2;
+    color: #272f2a;
+}
+#espace{
+	display: flex;
+	justify-content: center;
+}
+
+#welco{
+  display: flex;
+  justify-content: center;
+  font-family: 'Géorgie';
+  font-size: 50px;
+  color:#0400ff;
+}
+
+#espaceform{
+	border:solid;
+	border-radius: 20px;
+	box-shadow: 10px 5px 5px gray;
+	width: 50%;
+	padding: 40px;
+	margin-bottom: 40px;
+}
+
+.formulaire{
+display: flex;
+justify-content: center;
+}
+
+#cadreform{
+	width:50%;
+
+}
+
+.form{
+	display: flex;
+	flex-direction: column;
+	font-family: 'Géorgie';
+	font-size: 22px;
+}
+#cadreform h1{
+	text-align: center;
+	font-family: 'Géorgie';
+    font-size: 26px;
+
+}
+
+
+.commod h1{
+	text-align: center;
+	font-family: 'Géorgie';
+    font-size: 26px;
+}
+
+#buttonmo{
+	display: flex;
+	justify-content: center;
+}
+
+#forbout{
+	display: flex;
+	flex-direction: column;
+}
+
+#buttonmo input[type=submit] {
+    background-color: #1f7055;
+    color: #F3DA74;
+    padding: 10px 14px;
+    font-family: 'Géorgie';
+    font-size: 18px;
+    width: 280px;
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    margin: 10px;
+    margin-bottom: 30px;
+}
+#buttonmo input[type=submit]:hover {
+    background-color: #89d1ad;
+    color: #134434;
+}
+
+.inputa{
+	border-radius: 5px;
+	font-family: 'Géorgie';
+	font-size: 18px;
+	background-color:#eee4e2;
+	padding: 6px;
+	margin-bottom: 12px;
+}
+.inputa:hover{
+	background-color:#f7f3f2;
+}
+
+#valid{
+	display: flex;
+	justify-content: center;
+}
+
+.form h2{
+	 font-family: 'Géorgie';
+    font-size: 24px;
+}
+.form input[type=submit] {
+    background-color: #1f7055;
+    color: #F3DA74;
+    padding: 10px 14px;
+    font-family: 'Géorgie';
+    font-size: 20px;
+    width: 190px;
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    margin: 10px;
+
+}
+.form input[type=submit]:hover {
+    background-color: #5dc08f;
+    color: #134434;
+}
+
+.globprod{
+	display: flex;
+	justify-content: center;	
+}
+
+.espaceprod{
+	display: flex;
+	background-color: white;
+	border-radius: 5px;
+    box-shadow: 10px 5px 5px gray;
+	
+	margin: 20px;
+	padding: 12px;
+	width: 60%;
+}
+.globprod a{
+    text-decoration: none;
+    color:#2364d8;
+    font-size: 18px;
+}
+#iconprod{
+	display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+#infoprod{
+	background-color: #a9e0c082;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;	
+}
