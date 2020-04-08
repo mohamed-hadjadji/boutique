@@ -1,10 +1,9 @@
 <?php
 session_start();
 include('fonction.php');
-var_dump($_POST);
-if(1==0)
+if(isset($_GET['msg'])&&$_GET['msg']=="yes")
 {
-	echo"commande validé";
+	
 }
 else
 {
@@ -12,24 +11,88 @@ else
 {
 	if(isset($_POST['type_de_carte'])&&isset($_POST['numero_de_carte'])&&isset($_POST['securite'])&&isset($_POST['nom_porteur']))
 	 {
-	 	echo "validation en cours";
-	 	$pan=sql("SELECT * FROM pannier WHERE id_user=".$_SESSION['id']." && valider=0");
-	 	var_dump($pan);
+	 	$pan=sql("SELECT id_prod,pannier.quantite,prix,prix*pannier.quantite as total FROM `pannier` INNER JOIN produits ON pannier.id_prod=produits.id  WHERE id_user=".$_SESSION['id']." && valider=0");
 	 	if(!empty($pan))
 	 	{
-	 		echo "plein";
+	 		$pantotal=0;
+	 		$json="[";
+	 		$i=0;
+	 		$tailpan=count($pan);
+         	foreach ($pan as $p) 
+           {
+            $pantotal+=$p[3];
+            $json.="{\"id\": $p[0],\"quantite\":  $p[1],\"prix\":$p[2],\"total\": $p[3]}";
+            //requette pour les stock
+            if($i!=$tailpan-1)
+            {
+            	$json.=",";
+            }
+            $i++;
+           }
+           $json.="]";
+	 	   sql("INSERT INTO livraison (id_user,cmd,total )VALUES (".$_SESSION['id'].", '".$json."',$pantotal)");
+	 	   sql("UPDATE `pannier` SET `valider` = '1' WHERE id_user=".$_SESSION['id']." && valider=0");
+	 	   $msg="yes";
+
+	 	}
+	 	else
+	 	{
+	 		$msg="pannier introuvable ou vide";
 	 	}
 	 	
 	 }
 	 else
 	 {
-	 	echo "nop,nop,nop";
+	 	$msg="hakerman";
 	 }
 }
 else
 {
-	echo "nop,nop,nop";
+	$msg="hakerman";
 }
 }
 
 ?>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="camping.css">
+    <?php
+    	if(isset($_GET['msg']))
+    	{
+
+    	}
+    	else
+    	{
+    		?>
+    		<meta http-equiv="refresh" content="10;URL=paiment.php?msg=<?=$msg?>">
+    		<?php
+    	}
+    ?>
+    <title>Interface de paiment</title>
+</head>
+	<body class="">
+		<?php
+    	if(isset($_GET['msg']))
+    	{
+    		if($_GET['msg']=="yes")
+    		{
+    		?>
+    		validé
+    		<?php
+    		}
+    		else
+    		{
+    			echo $_GET['msg'];
+    		}
+    	}
+    	else
+    	{
+    		?>
+    		validation en cours
+    		<?php
+    	}
+    ?>
+	</body>
+</html>
