@@ -30,7 +30,7 @@
   } 
   if(isset($_POST['panier'])&&isset($_SESSION['id'])) 
   {
-      $testprod=sql("SELECT quantite FROM pannier WHERE id_prod=".$_POST['panier']." && id_user=".$_SESSION['id'].";");
+      $testprod=sql("SELECT quantite FROM pannier WHERE id_prod=".$_POST['panier']." && id_user=".$_SESSION['id']." && valider=0;");
                    
                     if(empty($testprod))
                     {
@@ -39,7 +39,7 @@
                     }
                     else
                     {
-                      sql("UPDATE pannier SET quantite= ".(1+$testprod[0][0])." WHERE id_prod=".$_POST['panier']." && id_user=".$_SESSION['id']."; ");
+                      sql("UPDATE pannier SET quantite= ".(1+$testprod[0][0])." WHERE id_prod=".$_POST['panier']." && id_user=".$_SESSION['id']."&& valider=0; ");
                       $testprod[0][0]++;
                     }
   }
