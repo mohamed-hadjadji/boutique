@@ -84,7 +84,7 @@
                          <input id=nom_porteur name=nom_porteur type=text placeholder="Même nom que sur la carte" required>
                       </li>
                     </ul>
-                    <input type="submit" name="validation du pannier">
+                    <input type="submit" name="paim" value="validation du pannier">
           </form>
          <!-- simulation de paiment!-->
 <?php
