@@ -151,6 +151,14 @@ justify-content: center;
     color: #134434;
 }
 
+#mesmod{
+	display: flex;
+	justify-content: center;
+	font-family: 'Géorgie';
+    font-size: 26px;
+    color: red;
+}
+
 .globprod{
 	display: flex;
 	justify-content: center;	

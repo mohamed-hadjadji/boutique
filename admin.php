@@ -22,9 +22,9 @@
      ?>
       <nav id="commande">
         <form class= 'button' method='POST'>
-           <input type="submit" value="Création Article" name="formcr">
-           <input type="submit" value="Modifier Article" name="formmo">
-           <input type="submit" value="Effacer Article" name="formdel">
+           <input type="submit" value="Créer un article" name="formcr">
+           <input type="submit" value="Modifier un article" name="formmo">
+           <input type="submit" value="Effacer un article" name="formdel">
         </form>
       </nav>
     </header>
