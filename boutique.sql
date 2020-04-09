@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 01 avr. 2020 à 09:07
+-- Généré le :  jeu. 09 avr. 2020 à 09:35
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `avis` (
   `id_produit` int(11) NOT NULL,
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `avis`
@@ -48,7 +48,48 @@ INSERT INTO `avis` (`id`, `commentaire`, `id_utilisateur`, `id_produit`, `date`)
 (16, 'Rapport qualitÃ© prix pas mal', 1, 44, '2020-03-30 22:36:37'),
 (15, 'Avec quelle capacitÃ© de stockage\r\n', 1, 41, '2020-03-27 19:33:11'),
 (14, 'Top de des smartphones', 1, 39, '2020-03-25 12:54:10'),
-(13, 'TÃ©lÃ©phone Apple mon prÃ©fÃ©rÃ© ', 1, 38, '2020-03-25 12:47:25');
+(13, 'TÃ©lÃ©phone Apple mon prÃ©fÃ©rÃ© ', 1, 38, '2020-03-25 12:47:25'),
+(17, 'bien sympa', 5, 46, '2020-04-01 12:18:58');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `livraison`
+--
+
+DROP TABLE IF EXISTS `livraison`;
+CREATE TABLE IF NOT EXISTS `livraison` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `status` varchar(255) NOT NULL DEFAULT 'p',
+  `cmd` json NOT NULL,
+  `total` double NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `livraison`
+--
+
+INSERT INTO `livraison` (`id`, `id_user`, `date`, `status`, `cmd`, `total`) VALUES
+(18, 5, '2020-04-08 15:38:16', 'p', '[{\"id\": 44, \"prix\": 500, \"total\": 1000, \"quantite\": 2}]', 1000),
+(17, 5, '2020-04-08 15:27:40', 'p', '[{\"id\": 44, \"prix\": 500, \"total\": 1000, \"quantite\": 2}]', 1000),
+(16, 5, '2020-04-08 15:16:05', 'p', '[{\"id\": 45, \"prix\": 27.66, \"total\": 193.62, \"quantite\": 7}, {\"id\": 46, \"prix\": 719, \"total\": 719, \"quantite\": 1}]', 912.62),
+(15, 5, '2020-04-08 15:13:11', 'p', '[{\"id\": 45, \"prix\": 27.66, \"total\": 193.62, \"quantite\": 7}, {\"id\": 46, \"prix\": 719, \"total\": 719, \"quantite\": 1}]', 912.62),
+(14, 5, '2020-04-08 15:07:57', 'p', '[{\"id\": 45, \"prix\": 27.66, \"total\": 193.62, \"quantite\": 7}, {\"id\": 46, \"prix\": 719, \"total\": 719, \"quantite\": 1}]', 912.62),
+(13, 5, '2020-04-08 14:32:59', 'p', '[{\"id\": 45, \"prix\": 27.66, \"total\": 110.64, \"quantite\": 4}, {\"id\": 46, \"prix\": 719, \"total\": 719, \"quantite\": 1}]', 829.64),
+(12, 5, '2020-04-08 14:26:39', 'p', '[{\"id\": 45, \"prix\": 27.66, \"total\": 110.64, \"quantite\": 4}, {\"id\": 46, \"prix\": 719, \"total\": 719, \"quantite\": 1}]', 829.64),
+(19, 5, '2020-04-08 15:45:24', 'p', '[{\"id\": 46, \"prix\": 719, \"total\": 719, \"quantite\": 1}]', 719),
+(20, 5, '2020-04-08 15:57:03', 'p', '[{\"id\": 44, \"prix\": 500, \"total\": 500, \"quantite\": 1}]', 500),
+(21, 5, '2020-04-08 16:06:59', 'p', '[{\"id\": 45, \"prix\": 27.66, \"total\": 55.32, \"quantite\": 2}, {\"id\": 46, \"prix\": 719, \"total\": 719, \"quantite\": 1}, {\"id\": 44, \"prix\": 500, \"total\": 1000, \"quantite\": 2}]', 1774.32),
+(22, 5, '2020-04-08 16:26:02', 'p', '[{\"id\": 45, \"prix\": 27.66, \"total\": 55.32, \"quantite\": 2}]', 55.32),
+(23, 5, '2020-04-08 16:31:31', 'p', '[{\"id\": 45, \"prix\": 27.66, \"total\": 27.66, \"quantite\": 1}]', 27.66),
+(24, 5, '2020-04-08 16:40:29', 'p', '[{\"id\": 46, \"prix\": 719, \"total\": 719, \"quantite\": 1}]', 719),
+(25, 5, '2020-04-08 16:41:56', 'p', '[{\"id\": 46, \"prix\": 719, \"total\": 719, \"quantite\": 1}]', 719),
+(26, 5, '2020-04-08 16:44:03', 'p', '[{\"id\": 46, \"prix\": 719, \"total\": 719, \"quantite\": 1}]', 719),
+(27, 5, '2020-04-08 16:46:54', 'p', '[{\"id\": 45, \"prix\": 27.66, \"total\": 55.32, \"quantite\": 2}]', 55.32),
+(28, 5, '2020-04-08 16:51:52', 'p', '[{\"id\": 44, \"prix\": 500, \"total\": 500, \"quantite\": 1}]', 500);
 
 -- --------------------------------------------------------
 
@@ -64,16 +105,24 @@ CREATE TABLE IF NOT EXISTS `pannier` (
   `quantite` int(11) NOT NULL,
   `valider` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `pannier`
 --
 
 INSERT INTO `pannier` (`id`, `id_user`, `id_prod`, `quantite`, `valider`) VALUES
-(13, 5, 39, 3, 0),
-(12, 5, 39, 1, 0),
-(11, 5, 39, 1, 0);
+(39, 5, 45, 2, 1),
+(38, 5, 46, 1, 1),
+(37, 5, 46, 1, 1),
+(36, 5, 46, 1, 1),
+(30, 5, 44, 2, 1),
+(32, 5, 45, 2, 1),
+(31, 5, 46, 1, 1),
+(35, 5, 45, 1, 1),
+(34, 5, 45, 2, 1),
+(33, 5, 44, 2, 1),
+(40, 5, 44, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -100,9 +149,9 @@ CREATE TABLE IF NOT EXISTS `produits` (
 --
 
 INSERT INTO `produits` (`id`, `titre`, `info`, `prix`, `categorie`, `souscategorie`, `quantite`, `icon`, `date`) VALUES
-(46, 'Samsung Galaxy S10 plus', 'Ecran Infinity 6.4 incurvÃ© Quad HD Super Amoled  Stockage 128 Go  RAM 8 Go Port microSD jusquÃ  512 Go ', 719, 'TÃ©lÃ©phone', 'SAMSUNG', '50', 'uploads/samsung-galaxy-s10+.jpg', '2020-03-30 23:03:04'),
-(45, 'Antichoc Wiko Pro ', 'WIko Pro Case View 2 Pro antichoc 3m', 27.66, 'Accessoire', 'WIKO', '200', 'uploads/wiko-pro-case-view-2-pro-antichoc-3m.jpg', '2020-03-30 22:58:18'),
-(44, 'XIAOMI Mi Note 10 Pro', 'Ecran incurvÃ© 6 pouce 3D AMOLED  Stockage 256 Go  RAM 8 Go  Photo arriÃ¨re 5 camÃ©ras 108 MP   avant  32 MP  Batterie 5260 mAh ', 500, 'TÃ©lÃ©phone', 'XIAOMI', '40', 'uploads/xiaomi-mi-note-10-pro.jpg', '2020-03-30 21:46:52');
+(46, 'Samsung Galaxy S10 plus', 'Ecran Infinity 6.4 incurvÃ© Quad HD Super Amoled  Stockage 128 Go  RAM 8 Go Port microSD jusquÃ  512 Go ', 719, 'TÃ©lÃ©phone', 'SAMSUNG', '45', 'uploads/samsung-galaxy-s10+.jpg', '2020-03-30 23:03:04'),
+(45, 'Antichoc Wiko Pro ', 'WIko Pro Case View 2 Pro antichoc 3m', 27.66, 'Accessoire', 'WIKO', '193', 'uploads/wiko-pro-case-view-2-pro-antichoc-3m.jpg', '2020-03-30 22:58:18'),
+(44, 'XIAOMI Mi Note 10 Pro', 'Ecran incurvÃ© 6 pouce 3D AMOLED  Stockage 256 Go  RAM 8 Go  Photo arriÃ¨re 5 camÃ©ras 108 MP   avant  32 MP  Batterie 5260 mAh ', 500, 'TÃ©lÃ©phone', 'XIAOMI', '37', 'uploads/xiaomi-mi-note-10-pro.jpg', '2020-03-30 21:46:52');
 
 -- --------------------------------------------------------
 
