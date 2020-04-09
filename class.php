@@ -147,7 +147,7 @@ class article
             if ($resultat2[$key][1]==$_POST['titre'])
             {
                $trouve=true;
-               echo "<p class='erreur'><b>Produit déja existant!!</b></p>";
+               echo "<p class='erreur'><b>Produit existe déja!!</b></p>";
             }
            }
            if ($trouve==false)
@@ -155,6 +155,8 @@ class article
             
             $requete = $connexion->query("INSERT INTO produits (titre,info,prix,categorie,souscategorie,quantite,icon,date) VALUES ('$nomart','$infoart','$prixart','$catart','$soucatart','$qtt','$target_file', NOW())");
 
+            header("location:admin.php");
+           
             echo "<p><b>Produit Créer</b></p>";
 
               }
@@ -169,7 +171,7 @@ class article
     $info = $_POST['info'];
     
     $requetemod = $connexion->query("UPDATE produits SET titre= '$titre2',info= '$info' WHERE titre = '$titre3'");
-    echo "<p><b>Produit Modifier</b></p>";
+    echo "<p id=\"mesmod\"><b>Produit Modifier</b></p>";
   }
    public function modifiericonproduit()
    {
@@ -191,19 +193,23 @@ class article
     }
 
     $requetemod = $connexion->query("UPDATE produits SET icon= '$target_file' WHERE titre = '$titre3'");
-    echo "<p><b>Produit Modifier</b></p>";
+    echo "<p id=\"mesmod\"><b>Produit Modifier</b></p>";
    }
 
    public function modifierprixproduit()
    {
     $connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
     
+    $requeteq = $connexion->query("SELECT * FROM produits");
+    foreach ($requeteq as $q) 
+    { 
+    
+    $qtt2 = $q[6]+$_POST['qtt2'];  
+    }
     $titre3 = $_POST['titre3'];
     $prix2 = $_POST['prix2'];
-    $qtt2 = $_POST['qtt2'];
-
     $requetemod = $connexion->query("UPDATE produits SET prix= '$prix2',quantite='$qtt2' WHERE titre = '$titre3'");
-    echo "<p><b>Produit Modifier</b></p>";
+    echo "<p id=\"mesmod\"><b>Produit Modifier</b></p>";
    }
 
    public function modifiercatproduit()
@@ -215,7 +221,7 @@ class article
     $souscategorie = $_POST['sous'];
 
     $requetemod = $connexion->query("UPDATE produits SET categorie='$categorie',souscategorie='$souscategorie' WHERE titre = '$titre3'");
-    echo "<p><b>Produit Modifier</b></p>";
+    echo "<p id=\"mesmod\"><b>Produit Modifier</b></p>";
    }
 
 
@@ -226,7 +232,7 @@ class article
     $titre4 = $_POST['titre4']; 
                                     
     $requetedel = $connexion->query("DELETE FROM produits WHERE titre = '$titre4'");
-    echo "<p><b>Produit Effacer</b></p>";
+    echo "<p id=\"mesmod\"><b>Produit Effacer</b></p>";
   }
 }
 ?>

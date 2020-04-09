@@ -48,13 +48,16 @@
               {
                 if($_POST['quant']<=$qtt && $_POST['quant']>0)
                 { 
+
                   $testprod=sql("SELECT quantite FROM pannier WHERE id_prod=".$_GET['id']." && id_user=".$_SESSION['id']." && valider=0;");
+
                     if(empty($testprod))
                     {
                       sql("INSERT INTO pannier(id_user,id_prod,quantite) VALUES ('".$_SESSION['id']."','".$_GET['id']."','".$_POST['quant']."' )");
                     }
                     else
                     {
+
                       sql("UPDATE pannier SET quantite= ".($_POST['quant']+$testprod[0][0])." WHERE id_prod=".$_GET['id']." && id_user=".$_SESSION['id']."&& valider=0; ");
                       $_POST['quant']+=$testprod[0][0];
                     }

@@ -1,13 +1,17 @@
 <?php
    session_start();
    include('fonction.php');
+
    include("class.php");
+
    if(isset($_POST['supan']))
    {
     sql("DELETE FROM `pannier` WHERE id_user=".$_SESSION['id']." && id_prod=".$_POST['supan']."");
    }
+
    $pannier=sql("SELECT id_prod,SUM(pannier.quantite),titre,prix,icon FROM `pannier` INNER JOIN `produits` ON id_prod=produits.id WHERE id_user=".$_SESSION['id']."&& valider=0 GROUP BY id_prod");
    //var_dump($pannier);
+
    ?>
 
 <!DOCTYPE html>
@@ -50,6 +54,7 @@
           </div>
           <?php       
            }
+
            ?><h1>total du pannier: <?=$pantotal?>€</h1>
                 <form method="post" action="paiment.php">
                   <legend>Informations CB</legend>
@@ -88,6 +93,7 @@
           </form>
          <!-- simulation de paiment!-->
 <?php
+
           }
           else
           {?>
