@@ -1,6 +1,8 @@
 <?php
    session_start();
-  //include("class.php");
+   include('fonction.php');
+
+  include("class.php");
    ?>
 
 <!DOCTYPE html>
@@ -31,8 +33,47 @@
                 echo "<img height=\"500\" src=\"$iconpro\">";
                 echo $infopro;
                 echo $prixpro."€";
+
            }
         	?>
+          <form method="post">
+             <input type="number" name="quant" value="1" min="1" max="<?= $qtt ?>">
+             <input type="submit" name="panier" value="ajouter au pannier">
+          </form>
+          <?php
+            if(isset($_POST['panier']))
+            {
+              
+              if(isset($_SESSION['id']))
+              {
+                if($_POST['quant']<=$qtt && $_POST['quant']>0)
+                { 
+                  $testprod=sql("SELECT quantite FROM pannier WHERE id_prod=".$_GET['id']." && id_user=".$_SESSION['id'].";");
+                    if(empty($testprod))
+                    {
+                      sql("INSERT INTO pannier(id_user,id_prod,quantite) VALUES ('".$_SESSION['id']."','".$_GET['id']."','".$_POST['quant']."' )");
+                    }
+                    else
+                    {
+                      sql("UPDATE pannier SET quantite= ".($_POST['quant']+$testprod[0][0])." WHERE id_prod=".$_GET['id']." && id_user=".$_SESSION['id']."; ");
+                      $_POST['quant']+=$testprod[0][0];
+                    }
+                    
+                    echo "Vous avez ".$_POST['quant']." copie de cette article dans votre panier";
+                }
+                else
+                {
+                  echo'bien essayé hackerman';
+                }
+                
+              }
+              else
+              { ?>
+                <p>vous devez étre <a href="connexion.php">connécté</a> pour pouvoir ajouter un produit </p>
+     <?php    }
+            }
+          ?>
+        </section>
         </section>
         <section>
         	<h2>Votre Avis sur le Produit</h2>
@@ -57,7 +98,6 @@
          
           }     
         ?>
-        </section>
         <section>
         	<?php
         	$requetemes = $connexion->query("SELECT avis.id, commentaire, avis.date, utilisateurs.id, login, produits.id, titre FROM avis INNER JOIN utilisateurs ON id_utilisateur= utilisateurs.id INNER JOIN produits ON id_produit = produits.id WHERE id_produit = $id ORDER BY avis.id DESC");
