@@ -1,3 +1,192 @@
+/*page panier*/
+
+.bodip{
+	background:url("img/Huawei-P20.jpg")top left/100% 100% ;
+	background-attachment:fixed;
+}
+
+.espart{
+	display: flex;
+	justify-content: space-around;
+	background-color: rgba(255, 255, 255, 0.9);
+	font-family: 'Géorgie';
+	margin: 30px;
+	padding: 20px;
+}
+#icoart{
+	border:solid;
+	border-radius: 16px;
+	padding: 22px;
+	border-color: #a2d0ceeb;
+}
+#infart{
+	background-color: #a2d0ceeb;
+	width: 50%;
+	padding: 34px;
+	border-radius: 16px;
+}
+#titre{
+    font-size: 30px;
+    color: #1c65d4;
+}
+#date{
+    font-size: 24px;
+    color: #188c0a;
+}
+#infart li{
+    font-size: 24px;
+	margin-top: 15px;
+}
+#pres{
+	margin-bottom: -10px;
+}
+#text{
+    font-size: 22px;
+}
+#prix{
+    font-size: 22px;
+    text-align: center;
+}
+#prix b{
+	font-size: 40px;
+	color: red;
+
+}
+#priart{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: #a2d0ceeb;
+	padding: 34px;
+	border-radius: 16px;
+}
+#quant{
+	font-size: 20px;
+}
+#quant b{
+	color:#188c0a;
+}
+
+.espan{
+	background-color: rgba(255, 255, 255, 0.9);
+	font-family: 'Géorgie';
+	margin: 30px;
+	padding: 20px;
+}
+
+.boutpan{
+	display: flex;
+	justify-content: center;
+}
+.ajpanier input[type=submit]{
+	background-color:#18723a;
+    color: white;
+    padding: 14px 20px;
+    font-size: 26px;
+    width: 340px;
+    border: none;
+    border-radius: 10px; 
+    cursor: pointer;
+    margin: 20px;
+}
+.ajpanier input[type=submit]:hover {
+    background-color: rgba(24, 114, 58, 0.71);
+    color: #272f2a;
+}
+.ajpanier input[type=number]{
+	padding: 14px 20px;
+    font-size: 24px;
+    border-radius: 10px;
+    width: 80px; 
+}
+
+.mespan{
+	display: flex;
+	justify-content: center;	
+	font-size: 22px;
+	color: red;
+	margin-top: 20px;
+}
+
+.comment{
+	display: flex;
+	justify-content: center;
+	background-color: #a2d0ceeb;
+	margin: 80px;
+	margin-top: 120px;
+	padding: 20px;
+}
+.sand{
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	font-family: 'Géorgie';
+	font-size: 22px;
+}
+#avform input[type=submit] {
+    background-color: #12876d;
+    color: white;
+    padding: 10px 14px;
+    font-family: 'Géorgie';
+    font-size: 20px;
+    width: 190px;
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    margin: 10px;
+
+}
+#avform input[type=submit]:hover {
+    background-color: #5dc08f;
+    color: #134434;
+}
+#area{
+	 border-radius: 10px;
+	 font-family: 'Géorgie';
+    font-size: 18px; 
+}
+
+.affavi{
+	display: flex;
+	flex-direction: column;
+	background-color: rgba(255, 255, 255, 0.7);
+	margin: 30px;
+	
+}
+.messa{
+	display: flex;
+	background-color: #a2d0ceeb;
+	font-family: 'Géorgie';
+    font-size: 18px; 
+    margin: 20px;
+	border-radius: 10px;
+	padding: 10px;
+}
+#user{
+	margin-right: 100px;
+}
+#user i{
+	color: #076125;
+}
+#user b{
+	color: red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*page admin*/
 
 .bodia{
