@@ -31,7 +31,7 @@
         </header>
         <main class="mopan">
           <div class="cadpan">
-           
+            <h1>Votre panier</h1>
            <?php
            if (!empty($pannier)) 
            {
@@ -43,7 +43,6 @@
               $ptotal=$p[3]*$p[1];
               $pantotal+=$ptotal;
             ?>
-          <h1>Votre panier :</h1>
           <section class="areap">
               <div class="esppan">
                 <div class="artpan">
@@ -130,7 +129,7 @@
             else
             {?>
               <article id="panvide">
-              <p><b>Votre panier est vide !</b></p>
+              <p><b>est vide !</b></p>
               </article>
             <?php }
            ?> 
