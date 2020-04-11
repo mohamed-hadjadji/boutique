@@ -1,6 +1,7 @@
 <?php
    session_start();
   include("class.php");
+  include("fonction.php");
    ?>
 
    <!DOCTYPE html>
@@ -25,6 +26,7 @@
            <input type="submit" value="Créer un article" name="formcr">
            <input type="submit" value="Modifier un article" name="formmo">
            <input type="submit" value="Effacer un article" name="formdel">
+           <input type="submit" value="Voir les commandes en cours" name="formcom">
         </form>
       </nav>
     </header>
@@ -33,7 +35,91 @@
         <aside id="espaceform">
           <p id="welco"><b>Bienvenue à l'éspace admin</b></p>
         <?php
-                
+         
+         if(isset($_POST['formcom'])||isset($_POST['changstat']))
+         {
+          if(isset($_POST['changstat'])) 
+          {
+            sql("UPDATE `livraison` SET `status` = '".$_POST['modif-stat']."' WHERE `id` =".$_POST['changstat']." ;");
+            //echo "UPDATE `livraison` SET `status` = '".$_POST['modif-stat']."' WHERE `id` =".$_POST['changstat']." ;";
+          }
+          $livraison=sql("SELECT livraison.id,date,status,cmd,total,adresse,email,login,prenom,nom,telephone FROM `livraison` INNER JOIN `utilisateurs` ON id_user = utilisateurs.id LIMIT 10 ");
+          var_dump($livraison);
+          ?>
+          <table>
+          <tr>
+            <td>id</td>
+            <td>date</td>
+            <td>total</td>
+            <td>status</td>
+            <td>voir la commande</td>
+            <td>adresse de livraison</td>
+            <td>client</td>
+          </tr>
+          <?php
+          foreach ($livraison as $l) 
+          {
+            ?>
+            <tr>
+              <td><?=$l[0]?></td>
+              <td><?=$l[1]?></td>
+              <td><?=$l[4]?>€</td>
+              <td>
+              <form method="post" action="admin.php">
+                <select name="modif-stat">
+                  <option value="p" <?php if($l[2]=="p"){echo "selected";}  ?> >En preparation</option>
+                  <option value="e" <?php if($l[2]=="e"){echo "selected";}  ?> >Expédié</option>
+                  <option value="r" <?php if($l[2]=="r"){echo "selected";}  ?> >reçus</option>    
+                </select>
+                <button type="submit" name="changstat" value="<?=$l[0]?>">modifier</button> 
+              </form>
+              </td>
+              <td>
+              <?php 
+                $com=json_decode($l[3]);
+                ?>
+                <table class="facture">
+                  <tr>
+                    <td>article</td>
+                    <td>prix</td>
+                    <td>quantitées</td>
+                    <td>total</td>
+                  </tr>
+                <?php
+                foreach ($com as $art) 
+                {
+                  $titre=sql("SELECT titre FROM produits WHERE id =".$art->id."");
+                  ?>
+                  <tr>
+                    <td><?=$titre[0][0] ?></td>
+                    <td><?=$art->prix ?></td>
+                    <td><?=$art->quantite ?></td>
+                    <td><?=$art->total ?></td>
+                  </tr>
+                  <?php
+                }  
+              ?> 
+               </table>               
+              </td>
+              <td><?=$l[5]?></td>
+              <td>
+                <b><?=$l[7]?></b>
+                <ul>
+                  <li>login : <?=$l[7]?></li>
+                  <li>nom : <?=$l[9]?></li>
+                  <li>prenom : <?=$l[8]?></li>
+                  <li>email : <?=$l[6]?></li>
+                  <li>telephone : <?=$l[10]?></li>                 
+                </ul>  
+                </td>
+            </tr>
+            <?php
+          }
+          ?>
+          </table>
+          <?php
+         }  
+
          if(isset($_POST['formcr']))
          {
         ?>
