@@ -95,23 +95,28 @@
                   }
                   else
                   { ?>
-                    <p>vous devez étre <a href="connexion.php">connécté</a> pour pouvoir ajouter un produit </p>
+                    <p>Vous devez être <a href="connexion.php">connécté</a> pour pouvoir ajouter un produit </p>
          <?php    }
                 }
               ?>
           </article>
         </section>
-
+      <?php
+        if (isset($_SESSION['login']))
+        {
+      ?>
+      
         <section class="comment">
           <article class="sand">
             	<h2>Votre Avis sur le Produit</h2>
               <form action="produit.php?id=<?php echo $id ?>" method="post" id="avform">
-                    <label>Poster votre commentaire</label></br>
+                    <label>Poster un commentaire</label></br>
                     <textarea id="area" type="text" name="comment" rows="3" maxlength="100" cols="120"required></textarea></br>
                     <input type="submit" value="Poster" name="submit">
               </form>
         </article>
-        <?php 
+        <?php
+         } 
           if (isset($_POST['submit']))
          { 
 
