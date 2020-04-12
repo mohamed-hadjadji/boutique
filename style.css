@@ -1,3 +1,83 @@
+/*Connexion*/
+.bodiprof{
+	background:url("img/galaxy-note10-image.jpg")top left/100% 100% ;
+    background-attachment:fixed;
+}
+.erreur{
+	color: red;
+}
+.new{
+	color: orange;
+}
+
+/*inscription*/
+
+#cadins{
+	background-color: #a2d0ceeb;
+	width:35%;
+	padding: 35px;
+	border-radius: 20px;
+}
+
+#cadins h1{
+	text-align: center;
+	font-family: 'Segoe UI';
+    font-size: 28px;
+}
+
+/*page profil*/
+
+.bodpro{
+	background:url("img/iPhone-8-Plus-10.jpg")top left/100% 100% ;
+    background-attachment:fixed;
+}
+
+.monprof{
+	display: flex;
+    justify-content: center;
+}
+.ident{
+	background-color: #a2d0ceeb;
+	width: 40%;
+	padding: 25px;
+}
+#loprof{
+    text-align: center;
+	font-family: 'Segoe UI';
+    font-size: 28px;
+}
+#nomprof{
+    font-size: 20px;
+    margin-left: 30px;
+}
+
+.proform{
+	display: flex;
+	justify-content: center;
+}
+
+#cadprof{
+	background-color: #a2d0ceeb;
+	width:40%;
+	padding: 25px;
+}
+
+#cadprof h3{
+	text-align: center;
+	font-family: 'Segoe UI';
+    font-size: 26px;
+}
+.valprof{
+	display: flex;
+	justify-content: center;
+}
+.notcon{
+	text-align: center;
+	font-family: 'Segoe UI';
+    font-size: 24px;
+}
+
+
 /*page produit*/
 
 .bodip{
@@ -333,7 +413,7 @@
     background-color: #3E5173;
     color: #F3DA74;
     padding: 14px 20px;
-    font-family: 'Géorgie';
+    font-family: 'Segoe UI';
     font-size: 24px;
     width: 300px;
     border: none;
@@ -355,7 +435,7 @@
 #welco{
   display: flex;
   justify-content: center;
-  font-family: 'Géorgie';
+  font-family: 'Segoe UI';
   font-size: 50px;
   color:#0400ff;
 }
@@ -382,12 +462,12 @@ justify-content: center;
 .form{
 	display: flex;
 	flex-direction: column;
-	font-family: 'Géorgie';
+	font-family: 'Segoe UI';
 	font-size: 22px;
 }
 #cadreform h1{
 	text-align: center;
-	font-family: 'Géorgie';
+	font-family: 'Segoe UI';
     font-size: 26px;
 
 }
@@ -395,7 +475,7 @@ justify-content: center;
 
 .commod h1{
 	text-align: center;
-	font-family: 'Géorgie';
+	font-family: 'Segoe UI';
     font-size: 26px;
 }
 
@@ -413,7 +493,7 @@ justify-content: center;
     background-color: #1f7055;
     color: #F3DA74;
     padding: 10px 14px;
-    font-family: 'Géorgie';
+    font-family: 'Segoe UI';
     font-size: 18px;
     width: 280px;
     border: none;
@@ -429,7 +509,7 @@ justify-content: center;
 
 .inputa{
 	border-radius: 5px;
-	font-family: 'Géorgie';
+	font-family: 'Segoe UI';
 	font-size: 18px;
 	background-color:#eee4e2;
 	padding: 6px;
@@ -445,7 +525,7 @@ justify-content: center;
 }
 
 .form h2{
-	 font-family: 'Géorgie';
+	 font-family: 'Segoe UI';
     font-size: 24px;
 }
 .form input[type=submit] {
@@ -469,7 +549,7 @@ justify-content: center;
 #mesmod{
 	display: flex;
 	justify-content: center;
-	font-family: 'Géorgie';
+	font-family: 'Segoe UI';
     font-size: 26px;
     color: red;
 }
