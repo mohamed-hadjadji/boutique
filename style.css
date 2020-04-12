@@ -385,3 +385,18 @@ justify-content: center;
     padding: 10px;
     border-radius: 5px;	
 }
+
+
+
+#tab-com
+{
+	width: 100%;
+}
+.hd-cont
+{
+    position: fixed;
+    top: 50%;
+    background-color: antiquewhite;
+    margin: 0;
+    padding: 0;
+}

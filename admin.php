@@ -48,6 +48,10 @@
       }
       
     }
+         function cache(t) 
+    {      
+       t.hidden = true; 
+    }
     </script>
 </head>
 
@@ -81,7 +85,7 @@
           }
           $livraison=sql("SELECT livraison.id,date,status,cmd,total,adresse,email,login,prenom,nom,telephone FROM `livraison` INNER JOIN `utilisateurs` ON id_user = utilisateurs.id LIMIT 10 ");
           ?>
-          <table>
+          <table id="tab-com">
           <tr>
             <td>id</td>
             <td>date</td>
@@ -114,7 +118,7 @@
                 $com=json_decode($l[3]);
                 ?>
                 <button onclick="fact(this)" >voir la facture</button>
-                <table class="facture" hidden>
+                <table class="facture hd-cont" hidden onclick="cache(this)">
                   <tr>
                     <td>article</td>
                     <td>prix</td>
@@ -140,7 +144,7 @@
               <td><?=$l[5]?></td>
               <td>
                 <b onclick="prof(this)"><?=$l[7]?></b>
-                <ul hidden>
+                <ul  class="hd-cont "hidden onclick="cache(this)">
                   <li>login : <?=$l[7]?></li>
                   <li>nom : <?=$l[9]?></li>
                   <li>prenom : <?=$l[8]?></li>
