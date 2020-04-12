@@ -12,9 +12,46 @@
     <meta charset="UTF-8">
     <title>Administrateur</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+    function stat(t) 
+    {
+      par = t.parentElement;
+      bout = par.getElementsByTagName('button');
+      bout[0].hidden = false;
+    }
+    function fact(t) 
+    {
+      par = t.parentElement;
+      tab = par.getElementsByTagName('table');
+      console.log(tab[0].hidden);
+      if (tab[0].hidden==true) 
+      {
+          tab[0].hidden = false;
+      }
+      else
+      {
+          tab[0].hidden = true;
+      }
+      
+    }
+        function prof(t) 
+    {
+      par = t.parentElement;
+      ul = par.getElementsByTagName('ul');
+      if (ul[0].hidden==true) 
+      {
+          ul[0].hidden = false;
+      }
+      else
+      {
+          ul[0].hidden = true;
+      }
+      
+    }
+    </script>
 </head>
 
-<body class="bodia">
+<body id="demo" class="bodia">
     <header>
     <?php 
       include ('bar-nav.php');
@@ -22,7 +59,7 @@
     {
      ?>
       <nav id="commande">
-        <form class= 'button' method='POST'>
+        <form  class= 'button' method='POST'>
            <input type="submit" value="Créer un article" name="formcr">
            <input type="submit" value="Modifier un article" name="formmo">
            <input type="submit" value="Effacer un article" name="formdel">
@@ -41,10 +78,8 @@
           if(isset($_POST['changstat'])) 
           {
             sql("UPDATE `livraison` SET `status` = '".$_POST['modif-stat']."' WHERE `id` =".$_POST['changstat']." ;");
-            //echo "UPDATE `livraison` SET `status` = '".$_POST['modif-stat']."' WHERE `id` =".$_POST['changstat']." ;";
           }
           $livraison=sql("SELECT livraison.id,date,status,cmd,total,adresse,email,login,prenom,nom,telephone FROM `livraison` INNER JOIN `utilisateurs` ON id_user = utilisateurs.id LIMIT 10 ");
-          var_dump($livraison);
           ?>
           <table>
           <tr>
@@ -52,7 +87,7 @@
             <td>date</td>
             <td>total</td>
             <td>status</td>
-            <td>voir la commande</td>
+            <td>commande</td>
             <td>adresse de livraison</td>
             <td>client</td>
           </tr>
@@ -66,19 +101,20 @@
               <td><?=$l[4]?>€</td>
               <td>
               <form method="post" action="admin.php">
-                <select name="modif-stat">
+                <select name="modif-stat" onclick="stat(this)">
                   <option value="p" <?php if($l[2]=="p"){echo "selected";}  ?> >En preparation</option>
                   <option value="e" <?php if($l[2]=="e"){echo "selected";}  ?> >Expédié</option>
                   <option value="r" <?php if($l[2]=="r"){echo "selected";}  ?> >reçus</option>    
                 </select>
-                <button type="submit" name="changstat" value="<?=$l[0]?>">modifier</button> 
+                <button type="submit" hidden name="changstat" value="<?=$l[0]?>">modifier</button> 
               </form>
               </td>
               <td>
               <?php 
                 $com=json_decode($l[3]);
                 ?>
-                <table class="facture">
+                <button onclick="fact(this)" >voir la facture</button>
+                <table class="facture" hidden>
                   <tr>
                     <td>article</td>
                     <td>prix</td>
@@ -103,8 +139,8 @@
               </td>
               <td><?=$l[5]?></td>
               <td>
-                <b><?=$l[7]?></b>
-                <ul>
+                <b onclick="prof(this)"><?=$l[7]?></b>
+                <ul hidden>
                   <li>login : <?=$l[7]?></li>
                   <li>nom : <?=$l[9]?></li>
                   <li>prenom : <?=$l[8]?></li>
