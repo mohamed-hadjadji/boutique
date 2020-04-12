@@ -52,10 +52,25 @@
     {      
        t.hidden = true; 
     }
+
+    function cherche(str) 
+    {
+      console.log(str);
+      xmlhttp=new XMLHttpRequest();
+      xmlhttp.onreadystatechange=function() 
+      {
+        if (this.readyState==4 && this.status==200) 
+        {
+          document.getElementById("rech-admin").innerHTML=this.responseText;
+        }
+      }
+      xmlhttp.open("GET","info.php?q="+str,true);
+      xmlhttp.send();
+    }
     </script>
 </head>
 
-<body id="demo" class="bodia">
+<body  class="bodia">
     <header>
     <?php 
       include ('bar-nav.php');
@@ -250,7 +265,9 @@
                     <h2>Modifier le nom & les informations</h2>
                    
                         <label>Produit a Modifier</label>
-                        <input class="inputa" type="text" name='titre3'/>
+                        <input class="inputa" type="text" list="rech-admin" onkeyup="cherche(this.value)" name='titre3'>
+                        <datalist id="rech-admin">
+                        </datalist>
 
                         <label>Nouveau Titre</label>
                         <input class="inputa" type="text" name='titre2'required/>
@@ -280,7 +297,9 @@
                       <h2>Modifier la photo</h2>
                    
                         <label>Produit a Modifier</label>
-                        <input class="inputa" type="text" name='titre3'/>              
+                        <input class="inputa" type="text" list="rech-admin" onkeyup="cherche(this.value)" name='titre3'>
+                        <datalist id="rech-admin">
+                        </datalist>             
                         <label>Modifier l'image de produit</label>
                         <input class="inputa" type="file" name='fileToUpload' required/>
                         <input type="submit" value="Modifier" name="modifierpic">         
@@ -306,7 +325,9 @@
                   <h2>Modifier le prix & la quantité</h2>
                    
                         <label>Produit à modifier</label>
-                        <input class="inputa" type="text" name='titre3'/> 
+                        <input class="inputa" type="text" list="rech-admin" onkeyup="cherche(this.value)" name='titre3'>
+                        <datalist id="rech-admin">
+                        </datalist>
                         <label>Nouveau prix</label>
                         <input class="inputa" type = " number " min = " 0.00 " max = " 10000.00 " step = " 0.01 " name='prix2'required/>
                         <label>Ajouter quantité</label>
@@ -333,7 +354,9 @@
                 <form class="form" method='POST'>
                       <h2>Modifier la catégorie & s.catégorie</h2>
                         <label>Produit à Modifier</label>
-                        <input class="inputa" type="text" name='titre3'/>        
+                        <input class="inputa" type="text" list="rech-admin" onkeyup="cherche(this.value)" name='titre3'>
+                        <datalist id="rech-admin">
+                        </datalist>        
                         <label>Nouvelle Catégorie</label>
                         <select class="inputa" type="text" name='catego' required />
                             <option></option>
@@ -391,7 +414,7 @@
 
                   <form class="form" method="post">
                       <label>Produit à Effacer</label></br>
-                      <input class="inputa" type="text" name="titre4" required></br>
+                      <input class="inputa" type="text" list="rech-admin" onkeyup="cherche(this.value)" name='titre4' required></br>
                       <input type="submit" value="Effacer" name="effacer"></br>
                   </form>
                 </article>
@@ -408,31 +431,7 @@
         ?>
       </aside>
   </main>
-    <?php
-
-    $connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
-            $reponse2 = $connexion->query( "SELECT *FROM produits ORDER BY produits.id DESC LIMIT 4");
-                
-                foreach ($reponse2 as $p) 
-                {
-                  ?>
-              <div class="globprod">
-                <div class="espaceprod">
-                  <div id="iconprod">
-                    <a href="produit.php?id=<?=$p[0]?>"><img height='160' src="<?=$p[7]?>"></a>
-                  </div>
-                  <div id="infoprod">
-                    <a href="produit.php?id=<?=$p[0]?>"><h3><b><?=$p[1]?></b></h3></a>
-                    <p><?=$p[2]?></p>
-                    <p>Prix : <?=$p[3]?>€</p>
-                    <p>Quantité en stock : <?=$p[6]?></p>   
-                  </div>
-                </div>
-              </div>
-                 
-                  <?php
-                }
-    
+    <?php    
   }
   else
   {
