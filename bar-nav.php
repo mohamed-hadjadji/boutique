@@ -20,16 +20,8 @@
       <img height="100" src="img/mobile-shop-logo.png">
       <p class=""><a href="connexion.php">Connexion</a></p>
       <p class=""><a href="inscription.php">Inscription</a></p>
-  </nav>
-    <li>
-      <form method="post" action="boutique.php" id="recherche bar-nav">
-              <input type="text" name="req">
-              <input type="submit" name="rech">
-      </form>
-    </li>
-    
+  </nav>    
       
-
     
      <?php
     }
