@@ -59,7 +59,7 @@ else
 <html>
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="camping.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <?php
     	if(isset($_GET['msg']))
     	{

@@ -17,7 +17,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="camping.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <title>Accueil</title>
 </head>
 <body class="">
@@ -25,6 +25,7 @@
     <?php 
     include("bar-nav.php");
     ?>
+  </header>
     <main id="user">
     <?php
     if (isset($_SESSION['login'])==false)

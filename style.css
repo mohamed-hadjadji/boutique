@@ -489,22 +489,57 @@ header{
 /*page admin*/
 
 .bodia{
-	background:url("img/bleu-ciel.jpg")top left/100% 100% ;
+	background:url("img/bleu-ciel.jpg") ;
 	background-attachment:fixed;
+	background-size: 100%;
 }
 
 #commande{
 	display: flex;
 	justify-content: center;
+	background-color: #45494c;
 }
 
 .button{
 	margin: 50px;
+	
 }
-
+.buttype
+{
+	background-color: #871E1E;
+    color: #FFF;
+    transition: background-color 1s , color 1s;
+    border-radius: 10px;
+	border:none;
+	padding: 10px;
+	cursor: pointer;
+	font-family: 'Segoe UI';
+	text-align: center;
+	margin-right: 3px;
+	margin-left: 3px;
+	text-transform: capitalize;
+}
+.td-comm
+{
+	text-align: center;
+}
+.th-comm
+{
+	font-size: 110%;
+}
+.buttype:hover
+{
+	background-color: #FFF;
+    color: #871E1E;
+    /*transition: background-color 1s , color 1s;*/
+}
+.linone
+{
+	list-style-type: none;
+}
 .button input[type=submit] {
-    background-color: #3E5173;
-    color: #F3DA74;
+    background-color: #871E1E;
+    color: #FFF;
     padding: 14px 20px;
     font-family: 'Segoe UI';
     font-size: 24px;
@@ -514,15 +549,19 @@ header{
     cursor: pointer;
     margin: 20px;
     margin-left: 100px;
+    transition: background-color 1s , color 1s;
+
  
 }
 .button input[type=submit]:hover {
-    background-color: #869fa2;
-    color: #272f2a;
+    background-color: #FFF;
+    color: #871E1E;
+    transition: background-color 1s , color 1s;
 }
 #espace{
 	display: flex;
 	justify-content: center;
+
 }
 
 #welco{
@@ -530,16 +569,18 @@ header{
   justify-content: center;
   font-family: 'Segoe UI';
   font-size: 50px;
-  color:#0400ff;
+  color: #fff;
+  text-shadow: 2px 3px 3px black;
 }
 
 #espaceform{
-	border:solid;
-	border-radius: 20px;
-	box-shadow: 10px 5px 5px gray;
-	width: 50%;
-	padding: 40px;
-	margin-bottom: 40px;
+border: solid;
+border-radius: 20px;
+box-shadow: 5px 2px 8px #353535;
+width: 50%;
+padding: 40px;
+margin-bottom: 40px;
+background-color: #9ab9a93d;
 }
 
 .formulaire{
@@ -557,6 +598,10 @@ justify-content: center;
 	flex-direction: column;
 	font-family: 'Segoe UI';
 	font-size: 22px;
+}
+.centre
+{
+	align-items: center;
 }
 #cadreform h1{
 	text-align: center;
@@ -583,8 +628,11 @@ justify-content: center;
 }
 
 #buttonmo input[type=submit] {
-    background-color: #1f7055;
-    color: #F3DA74;
+   
+
+    background-color: #871E1E;
+    color: #FFF;
+
     padding: 10px 14px;
     font-family: 'Segoe UI';
     font-size: 18px;
@@ -594,10 +642,11 @@ justify-content: center;
     cursor: pointer;
     margin: 10px;
     margin-bottom: 30px;
+    transition: background-color 1s , color 1s;
 }
 #buttonmo input[type=submit]:hover {
-    background-color: #89d1ad;
-    color: #134434;
+    background-color: #FFF;
+    color: #871E1E;
 }
 
 .inputa{
@@ -607,6 +656,7 @@ justify-content: center;
 	background-color:#eee4e2;
 	padding: 6px;
 	margin-bottom: 12px;
+	box-shadow: 2px 2px 3px #403434e8;
 }
 .inputa:hover{
 	background-color:#f7f3f2;
@@ -622,8 +672,9 @@ justify-content: center;
     font-size: 24px;
 }
 .form input[type=submit] {
-    background-color: #1f7055;
-    color: #F3DA74;
+
+    background-color: #871E1E;
+    color: #FFF;
     padding: 10px 14px;
     font-family: 'Géorgie';
     font-size: 20px;
@@ -632,11 +683,12 @@ justify-content: center;
     border-radius: 5px; 
     cursor: pointer;
     margin: 10px;
+    transition: background-color 1s , color 1s;
 
 }
 .form input[type=submit]:hover {
-    background-color: #5dc08f;
-    color: #134434;
+    background-color: #FFF;
+    color: #871E1E;
 }
 
 #mesmod{
@@ -684,14 +736,19 @@ justify-content: center;
 #tab-com
 {
 	width: 100%;
+	background-color: #ffffff94;
+	padding: 2%;
+	box-shadow: 2px 2px 6px #4d4848
 }
 .hd-cont
 {
     position: fixed;
     top: 50%;
-    background-color: antiquewhite;
+    left: 45%;
+    background-color: #fff9f1;
     margin: 0;
-    padding: 0;
+    padding: 1%;
+    box-shadow: 2px 2px 6px  #404040;
 }
 
 /*boutique*/

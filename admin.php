@@ -82,7 +82,7 @@
            <input type="submit" value="Créer un article" name="formcr">
            <input type="submit" value="Modifier un article" name="formmo">
            <input type="submit" value="Effacer un article" name="formdel">
-           <input type="submit" value="Voir les commandes en cours" name="formcom">
+           <input type="submit" value="Commandes en cours" name="formcom">
         </form>
       </nav>
     </header>
@@ -102,43 +102,43 @@
           ?>
           <table id="tab-com">
           <tr>
-            <td>id</td>
-            <td>date</td>
-            <td>total</td>
-            <td>status</td>
-            <td>commande</td>
-            <td>adresse de livraison</td>
-            <td>client</td>
+            <td class="td-comm th-comm">Id</td>
+            <td class="td-comm th-comm">Date</td>
+            <td class="td-comm th-comm">Total</td>
+            <td class="td-comm th-comm">Status</td>
+            <td class="td-comm th-comm">Commande</td>
+            <td class="td-comm th-comm">Adresse de livraison</td>
+            <td class="td-comm th-comm">Client</td>
           </tr>
           <?php
           foreach ($livraison as $l) 
           {
             ?>
             <tr>
-              <td><?=$l[0]?></td>
-              <td><?=$l[1]?></td>
-              <td><?=$l[4]?>€</td>
-              <td>
+              <td class="td-comm"><?=$l[0]?></td>
+              <td class="td-comm"><?=$l[1]?></td>
+              <td class="td-comm"><?=$l[4]?>€</td>
+              <td class="td-comm">
               <form method="post" action="admin.php">
                 <select name="modif-stat" onclick="stat(this)">
                   <option value="p" <?php if($l[2]=="p"){echo "selected";}  ?> >En preparation</option>
                   <option value="e" <?php if($l[2]=="e"){echo "selected";}  ?> >Expédié</option>
                   <option value="r" <?php if($l[2]=="r"){echo "selected";}  ?> >reçus</option>    
                 </select>
-                <button type="submit" hidden name="changstat" value="<?=$l[0]?>">modifier</button> 
+                <button type="submit" class="buttype" hidden name="changstat" value="<?=$l[0]?>">modifier</button> 
               </form>
               </td>
-              <td>
+              <td class="td-comm">
               <?php 
                 $com=json_decode($l[3]);
                 ?>
-                <button onclick="fact(this)" >voir la facture</button>
+                <button class="buttype" onclick="fact(this)" >voir la facture</button>
                 <table class="facture hd-cont" hidden onclick="cache(this)">
                   <tr>
-                    <td>article</td>
-                    <td>prix</td>
-                    <td>quantitées</td>
-                    <td>total</td>
+                    <td class="">Article</td>
+                    <td class="">Prix</td>
+                    <td class="">Quantitées</td>
+                    <td class="">Total</td>
                   </tr>
                 <?php
                 foreach ($com as $art) 
@@ -146,25 +146,25 @@
                   $titre=sql("SELECT titre FROM produits WHERE id =".$art->id."");
                   ?>
                   <tr>
-                    <td><?=$titre[0][0] ?></td>
-                    <td><?=$art->prix ?></td>
-                    <td><?=$art->quantite ?></td>
-                    <td><?=$art->total ?></td>
+                    <td class="td-comm"><?=$titre[0][0] ?></td>
+                    <td class="td-comm"><?=$art->prix ?></td>
+                    <td class="td-comm"><?=$art->quantite ?></td>
+                    <td class="td-comm"><?=$art->total ?>€</td>
                   </tr>
                   <?php
                 }  
               ?> 
                </table>               
               </td>
-              <td><?=$l[5]?></td>
-              <td>
-                <b onclick="prof(this)"><?=$l[7]?></b>
-                <ul  class="hd-cont "hidden onclick="cache(this)">
-                  <li>login : <?=$l[7]?></li>
-                  <li>nom : <?=$l[9]?></li>
-                  <li>prenom : <?=$l[8]?></li>
-                  <li>email : <?=$l[6]?></li>
-                  <li>telephone : <?=$l[10]?></li>                 
+              <td class="td-comm"><?=$l[5]?></td>
+              <td class="td-comm">
+                <p class="buttype" onclick="prof(this)"><?=$l[7]?></p>
+                <ul  class="hd-cont linone"hidden onclick="cache(this)">
+                  <li>Login : <?=$l[7]?></li>
+                  <li>Nom : <?=$l[9]?></li>
+                  <li>Prenom : <?=$l[8]?></li>
+                  <li>Email : <?=$l[6]?></li>
+                  <li>Telephone : <?=$l[10]?></li>                 
                 </ul>  
                 </td>
             </tr>
@@ -412,7 +412,7 @@
               <article id="cadreform">
                   <h1>Effacer un produit</h1>
 
-                  <form class="form" method="post">
+                  <form class="form centre" method="post">
                       <label>Produit à Effacer</label></br>
                       <input class="inputa" type="text" list="rech-admin" onkeyup="cherche(this.value)" name='titre4' required></br>
                       <input type="submit" value="Effacer" name="effacer"></br>
