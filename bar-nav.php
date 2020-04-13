@@ -20,8 +20,9 @@
       <img height="100" src="img/mobile-shop-logo.png">
       <p class=""><a href="connexion.php">Connexion</a></p>
       <p class=""><a href="inscription.php">Inscription</a></p>
-  </nav>    
+  </nav>
       
+
     
      <?php
     }

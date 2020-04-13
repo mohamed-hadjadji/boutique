@@ -752,6 +752,120 @@ justify-content: center;
 }
 
 /*boutique*/
-/*paiment*/
 /*index*/
+#body-ind
+{
+	background-image: url('https://live.mrf.io/statics/i/ps/www.gizchina.com/wp-content/uploads/images/2019/11/24a53590-e03b-11e9-840f-fdc5b39eb020.jpg');
+	background-attachment: fixed;
+	background-size: 100%;
+}
+#main-ind
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: #ffffffe0;
+	padding-bottom: 2%;
+}
+#main-ind>h3
+{
+	font-size: 250%;
+	font-family: 'Segoe UI';
+}
+#first-sec
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 2%;
+	padding: 2%;
+	background-color: #f0f8ffc4;
+	border-radius: 10px;
+	box-shadow: 2px 2px 8px #8c8888;
+
+}
+#first-sec > h
+{
+	font-family: 'Segoe UI';
+	font-size: 	120%;
+}
+#first-sec > p
+{	font-family: 'Segoe UI';
+	text-align: justify;
+}
+.art-ind
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 90%;
+	margin: 1%;
+	padding: 1%;
+	background-image: url('https://live.mrf.io/statics/i/ps/www.gizchina.com/wp-content/uploads/images/2019/11/24a53590-e03b-11e9-840f-fdc5b39eb020.jpg');
+	background-attachment: fixed;
+	background-size: 100%;
+	font-family: 'Segoe UI';
+	box-shadow: 2px 2px 8px #8c8888;
+	border-radius: 10px;
+	padding-bottom: 5%;
+}
+.art-ind> h1
+{
+	font-size: 40px;
+	color: #fff;
+	text-shadow: 2px 2px 4px #0d282d;
+
+}
+.sec-ind
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	width: 100%;
+
+}
+.div-ind
+{
+	display: flex;
+	flex-direction: column;	
+	background-color: #372f2fd1;
+	color: white;
+	width: 15%;
+	align-items: center;
+	padding: 1%;
+	box-shadow: 3px 3px 6px #423c3cc4;
+	border-radius: 10px;
+}
+.div-ind > b
+{
+	text-align: center;
+	text-shadow: 2px 2px 4px #0d282d;
+	flex:1;
+	font-size: 130%;
+	display: flex;
+	align-items: center;
+}
+.div-ind > img
+{
+	width: 200px;
+	box-shadow: 1px 1px 5px #0000006b;
+	margin: 10%;
+}
+.div-ind > a
+{
+	text-decoration: none;
+	font-family: 'Segoe UI';
+	color: white;
+	transition: color 1s ,letter-spacing 1s ,scale 1S;
+	font-size: 120%;
+}
+.div-ind > a:hover
+{
+	color: #eadcdc;
+	letter-spacing: 0.2em;
+	scale: 1.1;
+
+}
+
+
 /*paiment*/
