@@ -20,86 +20,121 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>Produit</title>
-        <link rel="stylesheet" href="">
+        <title>Panier</title>
+        <link rel="stylesheet" href="style.css">
     </head>
-    <body class="">
+    <body class="bodipa">
         <header>
              
             <?php include ('bar-nav.php')?>
 
         </header>
-        <main>
-         <h1>Votre pannier :</h1>
-         <?php
-         if (!empty($pannier)) 
-         {
-           
-         
-         $pantotal=0;
-          foreach ($pannier as $p) 
+        <main class="mopan">
+          <div class="cadpan">
+            <h1>Votre panier</h1>
+           <?php
+           if (!empty($pannier)) 
            {
-            $ptotal=$p[3]*$p[1];
-            $pantotal+=$ptotal;
-          ?>
-          <div>
-            <h><?=$p[2]?></h>
-            <img src="<?=$p[4]?>"/>
-            <p>prix: <?=$p[3]?>€</p>
-            <p>total: <?=$p[3]?> x <?=$p[1]?>= <?=$ptotal?>€</p>
-            <a href="produit.php?id=<?=$p[0]?>" >voir le produit</a>
-            <form method="post">
-              <button type="submit" name="supan" value="<?=$p[0]?>">suprimer</button>
-            </form>
-          </div>
-          <?php       
+             
+           
+           $pantotal=0;
+            foreach ($pannier as $p) 
+             {
+              $ptotal=$p[3]*$p[1];
+              $pantotal+=$ptotal;
+            ?>
+          <section class="areap">
+              <div class="esppan">
+                <div class="artpan">
+                    <article id="imapan">
+                      <img height="120" src="<?=$p[4]?>"/>
+                      <a href="produit.php?id=<?=$p[0]?>" ><b>Voir le produit</b></a>
+                    </article>
+                    <article id="titpan">
+                      <h3><b><?=$p[2]?></b></h3>               
+                      <p>Prix: <b><?=$p[3]?> €</b></p>
+                    </article>
+                    <article id="quantpa">
+                      <h3><b>Quantité:</b></h3>
+                      <p><b><?=$p[1]?></b></p>
+                    </article>
+                    <article id="totart">
+                      <h3>Total:</h3>
+                      <p><b><?=$ptotal?> €</b></p>
+                    </article>                    
+                    <form id="supp" method="post">
+                      <button type="submit" name="supan" value="<?=$p[0]?>"><img height="40"src="img/close-button.png"></button>
+                    </form>
+                 
+                </div>
+              </div>
+            </section>
+            <?php       
            }
 
-           ?><h1>total du pannier: <?=$pantotal?>€</h1>
-                <form method="post" action="paiment.php">
-                  <legend>Informations CB</legend>
-                    <ul>
-                      <li>
-                        <legend>Type de carte bancaire</legend>
+           ?>
+           <section class="validation">
+              <article id="totpan">
+               <h1>Total du panier: <b><?=$pantotal?> €</b></h1>
+             </article>
+             <article id="paiment">
+                    <form id="paiform" method="post" action="paiment.php">
+                      <legend id="ticar"><b>Informations CB</b></legend>
+                      <div id="card">
+                        <img height="80" src="img/visa.png">
+                        <img height="80" src="img/MasterCard.png">
+                        <img height="80" src="img/amex.png">
+                      </div>
                         <ul>
                           <li>
-                            <input id=visa name=type_de_carte type=radio>
-                            <label for=visa>VISA</label>
+                            <legend>Type de carte bancaire</legend>
+                            <ul>
+                              <li>
+                                <input id=visa name=type_de_carte type=radio>
+                                <label for=visa>VISA</label>
+                              </li>
+                              <li>
+                                <input id=amex name=type_de_carte type=radio>
+                                <label for=amex>AmEx</label>
+                              </li>
+                              <li>
+                                <input id=mastercard name=type_de_carte type=radio>
+                                <label for=mastercard>Mastercard</label>
+                              </li>
+                            </ul>
                           </li>
                           <li>
-                            <input id=amex name=type_de_carte type=radio>
-                            <label for=amex>AmEx</label>
+                             <label for=numero_de_carte>N° de carte</label>
+                             <input id=numero_de_carte name=numero_de_carte type=number required>
                           </li>
                           <li>
-                            <input id=mastercard name=type_de_carte type=radio>
-                            <label for=mastercard>Mastercard</label>
+                             <label for=securite>Code sécurité</label>
+                             <input id=securite name=securite type=number required>
+                          </li>
+                          <li>
+                             <label for=nom_porteur>Nom du porteur</label>
+                             <input id=nom_porteur name=nom_porteur type=text placeholder="Même nom que sur la carte" required>
                           </li>
                         </ul>
-                      </li>
-                      <li>
-                         <label for=numero_de_carte>N° de carte</label>
-                         <input id=numero_de_carte name=numero_de_carte type=number required>
-                      </li>
-                      <li>
-                         <label for=securite>Code sécurité</label>
-                         <input id=securite name=securite type=number required>
-                      </li>
-                      <li>
-                         <label for=nom_porteur>Nom du porteur</label>
-                         <input id=nom_porteur name=nom_porteur type=text placeholder="Même nom que sur la carte" required>
-                      </li>
-                    </ul>
-                    <input type="submit" name="paim" value="validation du pannier">
-          </form>
+                        <input type="submit" name="paim" value="Validation du panier">
+                    </form>
+                 </article>
+            </section>
+            
          <!-- simulation de paiment!-->
-<?php
+           <section >
+  <?php
 
-          }
-          else
-          {?>
-            <p>votre pannier est vide</p>
-          <?php }
-         ?> 
+            }
+            else
+            {?>
+              <article id="panvide">
+              <p><b>est vide !</b></p>
+              </article>
+            <?php }
+           ?> 
+             </section>
+         </div>
         </main>
     </body>
 </html>

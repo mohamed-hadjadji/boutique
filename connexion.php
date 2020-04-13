@@ -9,36 +9,36 @@
     <html>
         <head>
             <meta charset="utf-8">
-            <link rel="stylesheet" type="text/css" href="">
+            <link rel="stylesheet" type="text/css" href="style.css">
         <title>Connexion</title>
         </head>
-        <body class="">
+        <body class="bodiprof">
             <header>
             <?php
     	    include("bar-nav.php");
             ?>
             </header>
-            <section id="connexion">
+            <section class="proform">
+              
                 <?php
                 $connect = new user();
                 $connect->connect();
                 ?>
 
-                <div id="main" class="container">   
-                    <form name="loginform" id="loginform" action="#" method="post" class="wpl-track-me"> 
-                        <p class="login-username">
+                <article id="cadins"> 
+                    <h1> Connexion </h1> 
+                    <form class="form" name="loginform"  method="post"> 
+                        
                             <label for="user_login">Username</label> 
-                            <input type="text" id="user_login" class="input" placeholder="Username" value="" size="20" name="login" required/> 
-                        </p> 
-                        <p class="login-password"> 
+                            <input type="text" class="inputa" placeholder="Username" name="login" required/> 
+                       
+           
                             <label for="user_pass">Password</label>
-                            <input type="password" name="password" id="user_pass" class="input" placeholder="Password" value="" size="20" required/> 
-                        </p>    
-
-                        <p class="login-submit"><input type="submit" name="submit" id="submit" class="button-primary" value="Connexion" />
-                            <input type="hidden" name="redirect_to" value="#"/>
-                        </p>    
-                 
+                            <input type="password" name="password" class="inputa" placeholder="Password" required/> 
+                  
+                        <div class="valprof">
+                          <input type="submit" name="submit" value="Connexion"/>
+                        </div>                    
                         <?php
                         if(isset($_GET['erreur'])){
                             $err = $_GET['erreur'];
@@ -53,28 +53,29 @@
                         }
                         
                         ?>
-                    </main>
-                    <main class="inscri">
-                        <p>Pas encore membre ? <a href="inscription.php" class="btn">Inscrivez-vous gratuitement</a></p>
-                    </main>
+                    
+                        <div class="inscri">
+                            <p>Pas encore membre ? <a href="inscription.php" class="btn">Inscrivez-vous gratuitement</a></p>
+                        </div>
+                    
                      
-                </form>
-             </div>
+                   </form>
+                </article>
                 
                  
             </section>
-    <?php
-    }
-    else 
-    {
-    ?>
-    <section id="notcon">
-      <p>Vous êtes déjà connecté !!</p>
-    </section>
-        <?php
-    }
+            <?php
+            }
+            else 
+            {
+            ?>
+                <section id="notcon">
+                  <p>Vous êtes déjà connecté !!</p>
+                </section>
+            <?php
+           }
 
-    ?>
+        ?>
    
-</body>
+    </body>
 </html>

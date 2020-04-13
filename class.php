@@ -32,7 +32,7 @@ class user
             if ($resultat[$key][1]==$_POST['login'])
             {
                $trouve=true;
-               echo "<p class='erreur'><b>Login déja existant!!</b></p>";
+               echo "<p class='erreur'><b>Login existe déja !!</b></p>";
             }
            }
            if ($trouve==false)

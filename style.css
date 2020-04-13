@@ -1,5 +1,176 @@
-<<<<<<< HEAD
-=======
+/*barre nav*/
+body{
+	margin: 0px;
+}
+header{
+	background-color: white;
+	margin-bottom: 200px;
+}
+.recher{
+
+	height: 30px;
+	padding: 10px;
+}
+.recher input[type=text]{
+    border:solid;
+    border-radius: 20px;
+    border-color: #2d7c9b;
+	font-size: 20px;
+	padding: 3px;
+}
+.recher button{
+	border-radius: 20px;
+	width: 100px;
+	color: #2d7c9b;
+	font-family: 'Segoe UI';
+    font-size: 18px;
+    margin: 4px;	
+
+}
+#admin, #panier{
+  position: absolute;
+  top:5px; right:100px;
+}
+#searchbartop {
+  position: absolute;
+  top:5px; right:200px;
+}
+#searchbartop #searchbartopbtn { 
+  position:absolute; 
+  left: -9999px;
+}
+#searchbartop #searchbartopbtn + label { 
+  display:inline-block; 
+  cursor:pointer;
+  width:24px; height:0px;
+  line-height:24px;
+  text-align:center;
+  background:#ccc;
+}
+#searchbartop #searchbartopbtn:checked + label {
+  background:#ddd; color:#aaa;
+}
+#searchbartop form {
+  position:absolute; 
+  top:0; right:24px;
+  display:none;
+}
+#searchbartop form > button, #searchbartop form > div {
+  display:table-cell;
+  height:32px;
+}
+#searchbartop #searchbartopbtn:checked ~ form {
+  display:table;
+}
+#searchbartop form > div > input {
+  width:0;
+}
+#searchbartop #searchbartopbtn:checked ~ form > div > input {
+  animation: expand 0.5s ease-in-out 1;
+	animation-fill-mode: forwards;
+}
+@keyframes expand {
+  from { width:0; }
+  to   { width:450px; }
+}
+
+
+
+.menu{
+	display: flex;
+	justify-content: space-around;
+	background-color: #0d282d;
+	font-family: 'Segoe UI';
+    font-size: 28px;	
+}
+.menu a{
+	text-decoration: none;
+	color: white;
+}
+.menu a:hover{
+	color: #9adbef;
+}
+
+/*Connexion*/
+.bodiprof{
+	background:url("img/galaxy-note10-image.jpg")top left/100% 100% ;
+    background-attachment:fixed;
+}
+.erreur{
+	color: red;
+}
+.new{
+	color: orange;
+}
+
+/*inscription*/
+
+#cadins{
+	background-color: #a2d0ceeb;
+	width:35%;
+	padding: 35px;
+	border-radius: 20px;
+}
+
+#cadins h1{
+	text-align: center;
+	font-family: 'Segoe UI';
+    font-size: 28px;
+}
+
+/*page profil*/
+
+.bodpro{
+	background:url("img/iPhone-8-Plus-10.jpg")top left/100% 100% ;
+    background-attachment:fixed;
+}
+
+.monprof{
+	display: flex;
+    justify-content: center;
+}
+.ident{
+	background-color: #a2d0ceeb;
+	width: 40%;
+	padding: 25px;
+}
+#loprof{
+    text-align: center;
+	font-family: 'Segoe UI';
+    font-size: 28px;
+}
+#nomprof{
+    font-size: 20px;
+    margin-left: 30px;
+}
+
+.proform{
+	display: flex;
+	justify-content: center;
+}
+
+#cadprof{
+	background-color: #a2d0ceeb;
+	width:40%;
+	padding: 25px;
+}
+
+#cadprof h3{
+	text-align: center;
+	font-family: 'Segoe UI';
+    font-size: 26px;
+}
+.valprof{
+	display: flex;
+	justify-content: center;
+}
+.notcon{
+	text-align: center;
+	font-family: 'Segoe UI';
+    font-size: 24px;
+}
+
+
 /*page produit*/
 
 .bodip{
@@ -174,25 +345,147 @@
 	color: red;
 }
 
+
 /*page panier*/
+.bodipa{
+    background:url("img/huawei-mate-20.jpg")top left/100% 100% ;
+    background-attachment:fixed;
+}
+.mopan{
+	display: flex;
+	justify-content: center;
+}
+.cadpan{
+	background-color: rgba(255, 255, 255, 0.7);
+	width: 65%;
+	padding: 30px;
+}
+.mopan h1{
+	text-align: center;
+	font-family: 'Segoe UI';
+}
+.areap{
+	display: flex;
+	justify-content: center;
+}
+.esppan{
+	display: flex;
+	justify-content: center;
+	background-color: #a2d0ceeb;
+	font-family: 'Segoe UI';
+	padding: 30px;
+	width: 85%;
+}
+.artpan{
+	display: flex;
+	justify-content: space-around;
+	background-color: white;
+	width: 95%;
+	padding: 10px;
+	text-align: center;
+}
+.artpan h3{
+	font-size: 20px;
+}
+#imapan, #titpan, #totart, #quantpa, #supp{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+}
+#imapan a{
+	text-decoration: none;
+}
+#titpan p b{
+	color: red;
+	font-size: 18px;
+}
+#quantpa p b{
+	color: green;
+	font-size: 18px;
+}
+#totart b{
+	color: red;
+	font-size: 18px;
+}
+#supp button{
+	border-radius: 100%;
+	 cursor: pointer;
+}
+
+.validation{
+
+	margin-top: 40px;
+}
+#totpan{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
+}
+#totpan h1{
+	background-color: #a2d0ceeb;
+	border-radius: 30px;
+	font-size: 26px;
+	padding: 25px;
+	width: 400px;
+}
+#totpan b{
+	color: red;
+	font-size: 28px;
+}
+#paiment{
+ display: flex;
+ justify-content: center;
+ font-family: 'Segoe UI';
+}
+#card{
+	display: flex;
+	justify-content: space-around;
+}
+#paiform{
+	display: flex;
+	flex-direction: column;
+	background-color: white;
+	border:solid;
+	border-color: #a2d0ceeb;
+	border-width: 7px;
+	border-top-left-radius: 30px;
+	border-bottom-right-radius: 30px;
+    width: 32%;
+    font-size: 20px;
+    padding: 30px;
+}
+#ticar{
+	font-size: 22px;
+	text-align: center;
+}
+#paiform input[type=number]{
+	width: 250px;
+	font-size: 16px;
+}
+#paiform input[type=text]{
+	width: 250px;
+	font-size: 16px;
+}
+#paiform input[type=submit]{
+	background-color:#18723a;
+    color: white;
+    padding: 14px 20px;
+    font-size: 26px;
+    width: 340px;
+    border: none;
+    border-radius: 10px; 
+    cursor: pointer;
+    margin: 20px;
+}
+
+#panvide {
+	font-family: 'Segoe UI';
+	font-size: 30px;
+	text-align: center;
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> 691af0fec91499736c74a511e8f366263b019af8
 /*page admin*/
 
 .bodia{
@@ -213,7 +506,7 @@
     background-color: #3E5173;
     color: #F3DA74;
     padding: 14px 20px;
-    font-family: 'Géorgie';
+    font-family: 'Segoe UI';
     font-size: 24px;
     width: 300px;
     border: none;
@@ -235,7 +528,7 @@
 #welco{
   display: flex;
   justify-content: center;
-  font-family: 'Géorgie';
+  font-family: 'Segoe UI';
   font-size: 50px;
   color:#0400ff;
 }
@@ -262,12 +555,12 @@ justify-content: center;
 .form{
 	display: flex;
 	flex-direction: column;
-	font-family: 'Géorgie';
+	font-family: 'Segoe UI';
 	font-size: 22px;
 }
 #cadreform h1{
 	text-align: center;
-	font-family: 'Géorgie';
+	font-family: 'Segoe UI';
     font-size: 26px;
 
 }
@@ -275,7 +568,7 @@ justify-content: center;
 
 .commod h1{
 	text-align: center;
-	font-family: 'Géorgie';
+	font-family: 'Segoe UI';
     font-size: 26px;
 }
 
@@ -293,7 +586,7 @@ justify-content: center;
     background-color: #1f7055;
     color: #F3DA74;
     padding: 10px 14px;
-    font-family: 'Géorgie';
+    font-family: 'Segoe UI';
     font-size: 18px;
     width: 280px;
     border: none;
@@ -309,7 +602,7 @@ justify-content: center;
 
 .inputa{
 	border-radius: 5px;
-	font-family: 'Géorgie';
+	font-family: 'Segoe UI';
 	font-size: 18px;
 	background-color:#eee4e2;
 	padding: 6px;
@@ -325,7 +618,7 @@ justify-content: center;
 }
 
 .form h2{
-	 font-family: 'Géorgie';
+	 font-family: 'Segoe UI';
     font-size: 24px;
 }
 .form input[type=submit] {
@@ -349,7 +642,7 @@ justify-content: center;
 #mesmod{
 	display: flex;
 	justify-content: center;
-	font-family: 'Géorgie';
+	font-family: 'Segoe UI';
     font-size: 26px;
     color: red;
 }
