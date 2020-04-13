@@ -5,7 +5,7 @@
   <nav class="recher">
       <aside id="searchbartop">
         <input type="checkbox" id="searchbartopbtn" />
-        <label for="searchbartopbtn"><img height="40" src="img/recherche.png"></label>
+        <label for="searchbartopbtn"><img title="Recherche" height="40" src="img/recherche.png"></label>
         <form method="post" action="boutique.php" id="recherche bar-nav">
                   <div><input type="text" name="req" ></div>
                   <button type="submit" name="rech"><b>Recherche</b></button>
@@ -37,11 +37,11 @@
 
   <nav class="recher">
       <aside id="admin">
-      <a href="admin.php"><img height="44" src="img/admin.png"></a>
+      <a href="admin.php"><img title="Page admin" height="44" src="img/admin.png"></a>
       </aside>
       <aside id="searchbartop">
         <input type="checkbox" id="searchbartopbtn" />
-        <label for="searchbartopbtn"><img height="42" src="img/recherche.png"></label>
+        <label for="searchbartopbtn"><img title="Recherche" height="42" src="img/recherche.png"></label>
         <form method="post" action="boutique.php" id="recherche bar-nav">
                   <div><input type="text" name="req" ></div>
                   <button type="submit" name="rech"><b>Recherche</b></button>
@@ -67,11 +67,11 @@
     ?>
   <nav class="recher">
       <aside id="panier">
-         <a href="pannier.php"><img height="40" src="img/panier.png"></a>
+         <a href="pannier.php"><img title="Panier" height="40" src="img/panier.png"></a>
       </aside>
       <aside id="searchbartop">
         <input type="checkbox" id="searchbartopbtn" />
-        <label for="searchbartopbtn"><img height="40" src="img/recherche.png"></label>
+        <label for="searchbartopbtn"><img title="Recherche" height="40" src="img/recherche.png"></label>
         <form method="post" action="boutique.php" id="recherche bar-nav">
                   <div><input type="text" name="req" ></div>
                   <button type="submit" name="rech"><b>Recherche</b></button>

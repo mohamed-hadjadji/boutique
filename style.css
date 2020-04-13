@@ -29,11 +29,11 @@ header{
 }
 #admin, #panier{
   position: absolute;
-  top:5px; right:200px;
+  top:5px; right:100px;
 }
 #searchbartop {
   position: absolute;
-  top:5px; right:300px;
+  top:5px; right:200px;
 }
 #searchbartop #searchbartopbtn { 
   position:absolute; 
