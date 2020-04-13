@@ -1,3 +1,96 @@
+/*barre nav*/
+body{
+	margin: 0px;
+}
+header{
+	background-color: white;
+	margin-bottom: 200px;
+}
+.recher{
+
+	height: 30px;
+	padding: 10px;
+}
+.recher input[type=text]{
+    border:solid;
+    border-radius: 20px;
+    border-color: #2d7c9b;
+	font-size: 20px;
+	padding: 3px;
+}
+.recher button{
+	border-radius: 20px;
+	width: 100px;
+	color: #2d7c9b;
+	font-family: 'Segoe UI';
+    font-size: 18px;
+    margin: 4px;	
+
+}
+#admin, #panier{
+  position: absolute;
+  top:5px; right:200px;
+}
+#searchbartop {
+  position: absolute;
+  top:5px; right:300px;
+}
+#searchbartop #searchbartopbtn { 
+  position:absolute; 
+  left: -9999px;
+}
+#searchbartop #searchbartopbtn + label { 
+  display:inline-block; 
+  cursor:pointer;
+  width:24px; height:0px;
+  line-height:24px;
+  text-align:center;
+  background:#ccc;
+}
+#searchbartop #searchbartopbtn:checked + label {
+  background:#ddd; color:#aaa;
+}
+#searchbartop form {
+  position:absolute; 
+  top:0; right:24px;
+  display:none;
+}
+#searchbartop form > button, #searchbartop form > div {
+  display:table-cell;
+  height:32px;
+}
+#searchbartop #searchbartopbtn:checked ~ form {
+  display:table;
+}
+#searchbartop form > div > input {
+  width:0;
+}
+#searchbartop #searchbartopbtn:checked ~ form > div > input {
+  animation: expand 0.5s ease-in-out 1;
+	animation-fill-mode: forwards;
+}
+@keyframes expand {
+  from { width:0; }
+  to   { width:450px; }
+}
+
+
+
+.menu{
+	display: flex;
+	justify-content: space-around;
+	background-color: #0d282d;
+	font-family: 'Segoe UI';
+    font-size: 28px;	
+}
+.menu a{
+	text-decoration: none;
+	color: white;
+}
+.menu a:hover{
+	color: #9adbef;
+}
+
 /*Connexion*/
 .bodiprof{
 	background:url("img/galaxy-note10-image.jpg")top left/100% 100% ;
