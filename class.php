@@ -32,14 +32,14 @@ class user
             if ($resultat[$key][1]==$_POST['login'])
             {
                $trouve=true;
-               echo "<p class='erreur'><b>Login déja existant!!</b></p>";
+               echo "<p class='erreur'><b>Login existe déja !!</b></p>";
             }
            }
            if ($trouve==false)
            {
             $sql = $connexion->query( "INSERT INTO utilisateurs (login,prenom,nom,password,adresse,email,telephone)
                 VALUES ('$login','$prenom','$nom','$mdp','$adresse','$email','$tele')");      
-           
+            header('location:connexion.php');
             }
            }
            else
@@ -48,12 +48,58 @@ class user
            }
 
     }
-   public function connect($login, $password)
+   public function connect()
    {
-   	 $connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
+   	 $connexion =  mysqli_connect("localhost","root","","boutique");
 
-   	 
+   	 if(isset($_POST['login']) && isset($_POST['password']))
+        {
+             
+            $login = mysqli_real_escape_string($connexion,htmlspecialchars($_POST['login']));
+            $password = mysqli_real_escape_string($connexion,htmlspecialchars($_POST['password']));
+
+            if($login !== "" && $password !== "")
+            {
+                $requete = "SELECT count(*) FROM utilisateurs where
+                login = '".$login."' ";
+                $exec_requete = mysqli_query($connexion,$requete);
+                $reponse      = mysqli_fetch_array($exec_requete);
+                $count = $reponse['count(*)'];
+
+                $requete4 = "SELECT * FROM utilisateurs WHERE login='".$login."'";
+                $exec_requete4 = mysqli_query($connexion,$requete4);
+                $reponse4 = mysqli_fetch_array($exec_requete4);
+
+                if( $count!=0 && $_SESSION['login'] !== "" && password_verify($password, $reponse4[4]) )
+                {
             
+                $_SESSION['login'] = $_POST['login'];
+                $_SESSION['id'] = $reponse4[0];
+               
+                header('Location: index.php');
+                }
+                else
+                {
+                header('Location: connexion.php?erreur=1'); // utilisateur ou mot de passe incorrect
+                }
+            }
+        }
+            
+    }
+    public function update()
+    {
+
+            $login = $_POST['login'];
+            $passe = password_hash($_POST["mdp"], PASSWORD_DEFAULT, array('cost' => 12));
+            $adresse = $_POST['adresse'];
+            $email = $_POST['mail'];
+            $tele = $_POST['tele'];
+
+            $requete2 = "UPDATE utilisateurs SET login = '$login', password = '$passe', adresse = '$adresse', email = '$email', telephone = '$tele' WHERE login = '".$_SESSION['login']."'";
+            $query2=mysqli_query($connexion,$requete2);
+            session_unset();
+            header("location:connexion.php?reconnect=1");
+          
     }
 }
 
@@ -101,18 +147,16 @@ class article
             if ($resultat2[$key][1]==$_POST['titre'])
             {
                $trouve=true;
-               echo "<p class='erreur'><b>Produit déja existant!!</b></p>";
+               echo "<p class='erreur'><b>Produit existe déja!!</b></p>";
             }
            }
            if ($trouve==false)
            {
-            $requeteadmin = $connexion->query("SELECT * FROM utilisateurs WHERE login='".$_SESSION['login']."'");
-            $resultat=$requeteadmin->fetchAll();
+            
+            $requete = $connexion->query("INSERT INTO produits (titre,info,prix,categorie,souscategorie,quantite,icon,date) VALUES ('$nomart','$infoart','$prixart','$catart','$soucatart','$qtt','$target_file', NOW())");
 
-            $iduser =$resultat[0][0];
-
-            $requete = $connexion->query("INSERT INTO produits (titre,info,prix,categorie,souscategorie,quantite,icon,id_utilisateur) VALUES ('$nomart','$infoart','$prixart','$catart','$soucatart','$qtt','$target_file','$iduser')");
-
+            header("location:admin.php");
+           
             echo "<p><b>Produit Créer</b></p>";
 
               }
@@ -127,7 +171,7 @@ class article
     $info = $_POST['info'];
     
     $requetemod = $connexion->query("UPDATE produits SET titre= '$titre2',info= '$info' WHERE titre = '$titre3'");
-    echo "<p><b>Produit Modifier</b></p>";
+    echo "<p id=\"mesmod\"><b>Produit Modifier</b></p>";
   }
    public function modifiericonproduit()
    {
@@ -149,19 +193,23 @@ class article
     }
 
     $requetemod = $connexion->query("UPDATE produits SET icon= '$target_file' WHERE titre = '$titre3'");
-    echo "<p><b>Produit Modifier</b></p>";
+    echo "<p id=\"mesmod\"><b>Produit Modifier</b></p>";
    }
 
    public function modifierprixproduit()
    {
     $connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
     
+    $requeteq = $connexion->query("SELECT * FROM produits");
+    foreach ($requeteq as $q) 
+    { 
+    
+    $qtt2 = $q[6]+$_POST['qtt2'];  
+    }
     $titre3 = $_POST['titre3'];
     $prix2 = $_POST['prix2'];
-    $qtt2 = $_POST['qtt2'];
-
     $requetemod = $connexion->query("UPDATE produits SET prix= '$prix2',quantite='$qtt2' WHERE titre = '$titre3'");
-    echo "<p><b>Produit Modifier</b></p>";
+    echo "<p id=\"mesmod\"><b>Produit Modifier</b></p>";
    }
 
    public function modifiercatproduit()
@@ -173,7 +221,7 @@ class article
     $souscategorie = $_POST['sous'];
 
     $requetemod = $connexion->query("UPDATE produits SET categorie='$categorie',souscategorie='$souscategorie' WHERE titre = '$titre3'");
-    echo "<p><b>Produit Modifier</b></p>";
+    echo "<p id=\"mesmod\"><b>Produit Modifier</b></p>";
    }
 
 
@@ -184,7 +232,7 @@ class article
     $titre4 = $_POST['titre4']; 
                                     
     $requetedel = $connexion->query("DELETE FROM produits WHERE titre = '$titre4'");
-    echo "<p><b>Produit Effacer</b></p>";
+    echo "<p id=\"mesmod\"><b>Produit Effacer</b></p>";
   }
 }
 ?>

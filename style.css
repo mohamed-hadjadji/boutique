@@ -1,0 +1,1054 @@
+/*barre nav*/
+body{
+	margin: 0px;
+}
+header{
+	background-color: white;
+	margin-bottom: 200px;
+}
+.recher{
+
+	height: 30px;
+	padding: 10px;
+}
+.recher input[type=text]{
+    border:solid;
+    border-radius: 20px;
+    border-color: #2d7c9b;
+	font-size: 20px;
+	padding: 3px;
+}
+.recher button{
+	border-radius: 20px;
+	width: 100px;
+	color: #2d7c9b;
+	font-family: 'Segoe UI';
+    font-size: 18px;
+    margin: 4px;	
+
+}
+#admin, #panier{
+  position: absolute;
+  top:5px; right:100px;
+}
+#searchbartop {
+  position: absolute;
+  top:5px; right:200px;
+}
+#searchbartop #searchbartopbtn { 
+  position:absolute; 
+  left: -9999px;
+}
+#searchbartop #searchbartopbtn + label { 
+  display:inline-block; 
+  cursor:pointer;
+  width:24px; height:0px;
+  line-height:24px;
+  text-align:center;
+  background:#ccc;
+}
+#searchbartop #searchbartopbtn:checked + label {
+  background:#ddd; color:#aaa;
+}
+#searchbartop form {
+  position:absolute; 
+  top:0; right:24px;
+  display:none;
+}
+#searchbartop form > button, #searchbartop form > div {
+  display:table-cell;
+  height:32px;
+}
+#searchbartop #searchbartopbtn:checked ~ form {
+  display:table;
+}
+#searchbartop form > div > input {
+  width:0;
+}
+#searchbartop #searchbartopbtn:checked ~ form > div > input {
+  animation: expand 0.5s ease-in-out 1;
+	animation-fill-mode: forwards;
+}
+@keyframes expand {
+  from { width:0; }
+  to   { width:450px; }
+}
+
+
+
+.menu{
+	display: flex;
+	justify-content: space-around;
+	background-color: #0d282d;
+	font-family: 'Segoe UI';
+    font-size: 28px;	
+}
+.menu a{
+	text-decoration: none;
+	color: white;
+}
+.menu a:hover{
+	color: #9adbef;
+}
+
+/*Connexion*/
+.bodiprof{
+	background:url("img/galaxy-note10-image.jpg")top left/100% 100% ;
+    background-attachment:fixed;
+}
+.erreur{
+	color: red;
+}
+.new{
+	color: orange;
+}
+
+/*inscription*/
+
+#cadins{
+	background-color: #a2d0ceeb;
+	width:35%;
+	padding: 35px;
+	border-radius: 20px;
+}
+
+#cadins h1{
+	text-align: center;
+	font-family: 'Segoe UI';
+    font-size: 28px;
+}
+
+/*page profil*/
+
+.bodpro{
+	background:url("img/iPhone-8-Plus-10.jpg")top left/100% 100% ;
+    background-attachment:fixed;
+}
+
+.monprof{
+	display: flex;
+    justify-content: center;
+}
+.ident{
+	background-color: #a2d0ceeb;
+	width: 40%;
+	padding: 25px;
+}
+#loprof{
+    text-align: center;
+	font-family: 'Segoe UI';
+    font-size: 28px;
+}
+#nomprof{
+    font-size: 20px;
+    margin-left: 30px;
+}
+
+.proform{
+	display: flex;
+	justify-content: center;
+}
+
+#cadprof{
+	background-color: #a2d0ceeb;
+	width:40%;
+	padding: 25px;
+}
+
+#cadprof h3{
+	text-align: center;
+	font-family: 'Segoe UI';
+    font-size: 26px;
+}
+.valprof{
+	display: flex;
+	justify-content: center;
+}
+.notcon{
+	text-align: center;
+	font-family: 'Segoe UI';
+    font-size: 24px;
+}
+
+
+/*page produit*/
+
+.bodip{
+	background:url("img/Huawei-P20.jpg")top left/100% 100% ;
+	background-attachment:fixed;
+}
+
+.espart{
+	display: flex;
+	justify-content: space-around;
+	background-color: rgba(255, 255, 255, 0.9);
+	font-family: 'Segoe UI';
+	margin: 30px;
+	padding: 20px;
+}
+#icoart{
+	border:solid;
+	border-radius: 16px;
+	padding: 22px;
+	border-color: #a2d0ceeb;
+}
+#infart{
+	background-color: #a2d0ceeb;
+	width: 50%;
+	padding: 34px;
+	border-radius: 16px;
+}
+#titre{
+    font-size: 30px;
+    color: #1c65d4;
+}
+#date{
+    font-size: 24px;
+    color: #188c0a;
+}
+#infart li{
+    font-size: 24px;
+	margin-top: 15px;
+}
+#pres{
+	margin-bottom: -10px;
+}
+#text{
+    font-size: 22px;
+}
+#prix{
+    font-size: 22px;
+    text-align: center;
+}
+#prix b{
+	font-size: 40px;
+	color: red;
+
+}
+#priart{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: #a2d0ceeb;
+	padding: 34px;
+	border-radius: 16px;
+}
+#quant{
+	font-size: 20px;
+}
+#quant b{
+	color:#188c0a;
+}
+
+.espan{
+	background-color: rgba(255, 255, 255, 0.9);
+	font-family: 'Segoe UI';
+	margin: 30px;
+	padding: 20px;
+}
+
+.boutpan{
+	display: flex;
+	justify-content: center;
+}
+.ajpanier input[type=submit]{
+	background-color:#18723a;
+    color: white;
+    padding: 14px 20px;
+    font-size: 26px;
+    width: 340px;
+    border: none;
+    border-radius: 10px; 
+    cursor: pointer;
+    margin: 20px;
+}
+.ajpanier input[type=submit]:hover {
+    background-color: rgba(24, 114, 58, 0.71);
+    color: #272f2a;
+}
+.ajpanier input[type=number]{
+	padding: 14px 20px;
+    font-size: 24px;
+    border-radius: 10px;
+    width: 80px; 
+}
+
+.mespan{
+	display: flex;
+	justify-content: center;	
+	font-size: 22px;
+	color: red;
+	margin-top: 20px;
+}
+
+.comment{
+	display: flex;
+	justify-content: center;
+	background-color: #a2d0ceeb;
+	margin: 80px;
+	margin-top: 120px;
+	padding: 20px;
+}
+.sand{
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	font-family: 'Segoe UI';
+	font-size: 22px;
+}
+#avform input[type=submit] {
+    background-color: #12876d;
+    color: white;
+    padding: 10px 14px;
+    font-family: 'Segoe UI';
+    font-size: 20px;
+    width: 190px;
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    margin: 10px;
+
+}
+#avform input[type=submit]:hover {
+    background-color: #5dc08f;
+    color: #134434;
+}
+#area{
+	 border-radius: 10px;
+	 font-family: 'Segoe UI';
+    font-size: 18px; 
+}
+
+.affavi{
+	display: flex;
+	flex-direction: column;
+	background-color: rgba(255, 255, 255, 0.7);
+	margin: 30px;
+	
+}
+.messa{
+	display: flex;
+	background-color: #a2d0ceeb;
+	font-family: 'Segoe UI';
+    font-size: 18px; 
+    margin: 20px;
+	border-radius: 10px;
+	padding: 10px;
+}
+#user{
+	margin-right: 100px;
+}
+#user i{
+	color: #076125;
+}
+#user b{
+	color: red;
+}
+
+
+/*page panier*/
+.bodipa{
+    background:url("img/huawei-mate-20.jpg")top left/100% 100% ;
+    background-attachment:fixed;
+}
+.mopan{
+	display: flex;
+	justify-content: center;
+}
+.cadpan{
+	background-color: rgba(255, 255, 255, 0.7);
+	width: 65%;
+	padding: 30px;
+}
+.mopan h1{
+	text-align: center;
+	font-family: 'Segoe UI';
+}
+.areap{
+	display: flex;
+	justify-content: center;
+}
+.esppan{
+	display: flex;
+	justify-content: center;
+	background-color: #a2d0ceeb;
+	font-family: 'Segoe UI';
+	padding: 30px;
+	width: 85%;
+}
+.artpan{
+	display: flex;
+	justify-content: space-around;
+	background-color: white;
+	width: 95%;
+	padding: 10px;
+	text-align: center;
+}
+.artpan h3{
+	font-size: 20px;
+}
+#imapan, #titpan, #totart, #quantpa, #supp{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+}
+#imapan a{
+	text-decoration: none;
+}
+#titpan p b{
+	color: red;
+	font-size: 18px;
+}
+#quantpa p b{
+	color: green;
+	font-size: 18px;
+}
+#totart b{
+	color: red;
+	font-size: 18px;
+}
+#supp button{
+	border-radius: 100%;
+	 cursor: pointer;
+}
+
+.validation{
+
+	margin-top: 40px;
+}
+#totpan{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
+}
+#totpan h1{
+	background-color: #a2d0ceeb;
+	border-radius: 30px;
+	font-size: 26px;
+	padding: 25px;
+	width: 400px;
+}
+#totpan b{
+	color: red;
+	font-size: 28px;
+}
+#paiment{
+ display: flex;
+ justify-content: center;
+ font-family: 'Segoe UI';
+}
+#card{
+	display: flex;
+	justify-content: space-around;
+}
+#paiform{
+	display: flex;
+	flex-direction: column;
+	background-color: white;
+	border:solid;
+	border-color: #a2d0ceeb;
+	border-width: 7px;
+	border-top-left-radius: 30px;
+	border-bottom-right-radius: 30px;
+    width: 32%;
+    font-size: 20px;
+    padding: 30px;
+}
+#ticar{
+	font-size: 22px;
+	text-align: center;
+}
+#paiform input[type=number]{
+	width: 250px;
+	font-size: 16px;
+}
+#paiform input[type=text]{
+	width: 250px;
+	font-size: 16px;
+}
+#paiform input[type=submit]{
+	background-color:#18723a;
+    color: white;
+    padding: 14px 20px;
+    font-size: 26px;
+    width: 340px;
+    border: none;
+    border-radius: 10px; 
+    cursor: pointer;
+    margin: 20px;
+}
+
+#panvide {
+	font-family: 'Segoe UI';
+	font-size: 30px;
+	text-align: center;
+}
+
+
+/*page admin*/
+
+.bodia{
+	background:url("img/bleu-ciel.jpg") ;
+	background-attachment:fixed;
+	background-size: 100%;
+}
+
+#commande{
+	display: flex;
+	justify-content: center;
+	background-color: #45494c;
+}
+
+.button{
+	margin: 50px;
+	
+}
+.buttype
+{
+	background-color: #871E1E;
+    color: #FFF;
+    transition: background-color 1s , color 1s;
+    border-radius: 10px;
+	border:none;
+	padding: 10px;
+	cursor: pointer;
+	font-family: 'Segoe UI';
+	text-align: center;
+	margin-right: 3px;
+	margin-left: 3px;
+	text-transform: capitalize;
+}
+.td-comm
+{
+	text-align: center;
+}
+.th-comm
+{
+	font-size: 110%;
+}
+.buttype:hover
+{
+	background-color: #FFF;
+    color: #871E1E;
+    /*transition: background-color 1s , color 1s;*/
+}
+.linone
+{
+	list-style-type: none;
+}
+.button input[type=submit] {
+    background-color: #871E1E;
+    color: #FFF;
+    padding: 14px 20px;
+    font-family: 'Segoe UI';
+    font-size: 24px;
+    width: 300px;
+    border: none;
+    border-radius: 10px; 
+    cursor: pointer;
+    margin: 20px;
+    margin-left: 100px;
+    transition: background-color 1s , color 1s;
+
+ 
+}
+.button input[type=submit]:hover {
+    background-color: #FFF;
+    color: #871E1E;
+    transition: background-color 1s , color 1s;
+}
+#espace{
+	display: flex;
+	justify-content: center;
+
+}
+
+#welco{
+  display: flex;
+  justify-content: center;
+  font-family: 'Segoe UI';
+  font-size: 50px;
+  color: #fff;
+  text-shadow: 2px 3px 3px black;
+}
+
+#espaceform{
+border: solid;
+border-radius: 20px;
+box-shadow: 5px 2px 8px #353535;
+width: 50%;
+padding: 40px;
+margin-bottom: 40px;
+background-color: #9ab9a93d;
+}
+
+.formulaire{
+display: flex;
+justify-content: center;
+}
+
+#cadreform{
+	width:50%;
+
+}
+
+.form{
+	display: flex;
+	flex-direction: column;
+	font-family: 'Segoe UI';
+	font-size: 22px;
+}
+.centre
+{
+	align-items: center;
+}
+#cadreform h1{
+	text-align: center;
+	font-family: 'Segoe UI';
+    font-size: 26px;
+
+}
+
+
+.commod h1{
+	text-align: center;
+	font-family: 'Segoe UI';
+    font-size: 26px;
+}
+
+#buttonmo{
+	display: flex;
+	justify-content: center;
+}
+
+#forbout{
+	display: flex;
+	flex-direction: column;
+}
+
+#buttonmo input[type=submit] {
+   
+
+    background-color: #871E1E;
+    color: #FFF;
+
+    padding: 10px 14px;
+    font-family: 'Segoe UI';
+    font-size: 18px;
+    width: 280px;
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    margin: 10px;
+    margin-bottom: 30px;
+    transition: background-color 1s , color 1s;
+}
+#buttonmo input[type=submit]:hover {
+    background-color: #FFF;
+    color: #871E1E;
+}
+
+.inputa{
+	border-radius: 5px;
+	font-family: 'Segoe UI';
+	font-size: 18px;
+	background-color:#eee4e2;
+	padding: 6px;
+	margin-bottom: 12px;
+	box-shadow: 2px 2px 3px #403434e8;
+}
+.inputa:hover{
+	background-color:#f7f3f2;
+}
+
+#valid{
+	display: flex;
+	justify-content: center;
+}
+
+.form h2{
+	 font-family: 'Segoe UI';
+    font-size: 24px;
+}
+.form input[type=submit] {
+
+    background-color: #871E1E;
+    color: #FFF;
+    padding: 10px 14px;
+    font-family: 'Géorgie';
+    font-size: 20px;
+    width: 190px;
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 1s , color 1s;
+
+}
+.form input[type=submit]:hover {
+    background-color: #FFF;
+    color: #871E1E;
+}
+
+#mesmod{
+	display: flex;
+	justify-content: center;
+	font-family: 'Segoe UI';
+    font-size: 26px;
+    color: red;
+}
+
+.globprod{
+	display: flex;
+	justify-content: center;	
+}
+
+.espaceprod{
+	display: flex;
+	background-color: white;
+	border-radius: 5px;
+    box-shadow: 10px 5px 5px gray;
+	
+	margin: 20px;
+	padding: 12px;
+	width: 60%;
+}
+.globprod a{
+    text-decoration: none;
+    color:#2364d8;
+    font-size: 18px;
+}
+#iconprod{
+	display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+#infoprod{
+	background-color: #a9e0c082;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;	
+}
+
+
+
+#tab-com
+{
+	width: 100%;
+	background-color: #ffffff94;
+	padding: 2%;
+	box-shadow: 2px 2px 6px #4d4848
+}
+.hd-cont
+{
+    position: fixed;
+    top: 50%;
+    left: 45%;
+    background-color: #fff9f1;
+    margin: 0;
+    padding: 1%;
+    box-shadow: 2px 2px 6px  #404040;
+}
+
+/*boutique*/
+.body-bout
+{	background-attachment: fixed;
+	background: rgb(135,30,30);
+
+}
+#main-bout
+{
+	
+}
+#optionboutique
+{
+	display: flex;
+	flex-direction: column;
+	background-color: #0d282d;
+	padding: 2%;
+	border-bottom: 3px solid #871e1e;
+}
+#f-recherche
+{
+	display: flex;
+	justify-content: end;
+	align-items: center;
+	margin-bottom: 1%;
+}
+#f-recherche> input[type=text]
+{
+	margin-right: 3%;
+	width: 30%;
+	font-size: 175%;
+	font-size: 1;
+	border-radius: 10px;
+	border: none;
+	padding: 10px;
+	text-align: center;
+	font-family: 'Segoe UI';
+
+}
+#f-option
+{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	}
+#f-option>label
+{
+	display: flex;
+	align-items: center;
+	font-size: 20px;
+	font-family: 'Segoe UI';
+	color: white;
+}
+#f-option>label>*
+{
+	font-size: 15px;
+	font-family: 'Segoe UI';
+	border-radius: 10px;
+	border:none;
+}
+#f-option>input[type=submit],#f-recherche>input[type=submit]
+{
+	font-size: 20px;
+}
+#cont-bout {
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: rgb(176,223,217);
+	background: linear-gradient(349deg, rgba(176,223,217,1) 0%, rgba(255,255,255,1) 100%); 
+	background-size: 100%;
+	background-attachment: fixed;
+}
+#res-bout
+{	
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	padding: 1%;
+	 background: rgb(239,248,249);
+background: linear-gradient(56deg, rgba(239,248,249,1) 19%, rgba(213,237,238,0.8497198195684523) 83%, rgba(255,255,255,1) 100%); 
+	background-attachment: fixed;
+	margin: 2%;
+	border-radius: 10px;
+	box-shadow: 2px 2px 18px #282733;
+	border: 3px solid #871e1e;
+}
+
+.prod-bout
+{
+	width: 25%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 70vh;
+	justify-content: space-between;
+	margin: 1%;
+	background: linear-gradient(349deg, rgba(176,223,217,1) 0%, rgba(255,255,255,1) 100%); 
+	background-size: 100%;
+	background-attachment: fixed;
+	border-radius: 10px;
+	box-shadow: 2px 2px 12px #282733;
+	padding: 1%;
+}
+.prod-bout>h1
+{
+	font-size: 1.2vw;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	margin: 0;
+	flex:1;
+	font-family: 'Segoe UI';
+	color: white;
+	text-shadow: 1px 1px 2px #0d282d;
+}
+.prod-bout>img
+{
+	margin: 0;
+	flex:5;
+	border: 3px solid #871e1e;
+	border-radius: 10px;
+}
+.prod-bout>p
+{
+	
+	width: 90%;
+	text-align: justify;
+	font-size: 1vw;
+	display: flex;
+	justify-content: center;
+	margin: 0;
+	flex:4;
+	padding: 1%;
+	font-family: 'Segoe UI';
+}
+.prod-bout>h
+{
+	
+	width: 90%;
+	text-align: justify;
+	font-size: 1.4vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	flex:1;
+	font-family: 'Segoe UI';
+	margin-bottom: 5%;
+	color: white;
+	text-shadow: 1px 1px 2px #0d282d;
+}
+.prod-bout>section
+{
+	flex:1;
+	margin: 0;
+	width: 100%;
+	justify-content: space-around;
+	align-items: center;
+	display: flex;
+	font-family: 'Segoe UI';
+}
+.prod-bout>section>a
+{
+	text-decoration: none;
+	font-size: 2vh;
+	font-family: 'Segoe UI';
+	box-shadow: 2px 2px 12px #282733;
+	
+}
+.prod-bout>section>form>button
+{
+	
+	text-decoration: none;
+	font-size: 2vh;
+	font-family: 'Segoe UI';
+	box-shadow: 2px 2px 12px #282733;
+}
+/*index*/
+#body-ind
+{
+	background-image: url('https://live.mrf.io/statics/i/ps/www.gizchina.com/wp-content/uploads/images/2019/11/24a53590-e03b-11e9-840f-fdc5b39eb020.jpg');
+	background-attachment: fixed;
+	background-size: 100%;
+}
+#main-ind
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: #ffffffe0;
+	padding-bottom: 2%;
+	border-top: 3px solid #c13636ab;
+}
+#main-ind>h3
+{
+	font-size: 250%;
+	font-family: 'Segoe UI';
+}
+#first-sec
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 2%;
+	padding: 2%;
+	background-color: #f0f8ffc4;
+	border-radius: 10px;
+	box-shadow: 2px 2px 8px #8c8888;
+	border: 3px solid #c13636ab;
+
+}
+#first-sec > h
+{
+	font-family: 'Segoe UI';
+	font-size: 	120%;
+}
+#first-sec > p
+{	font-family: 'Segoe UI';
+	text-align: justify;
+}
+.art-ind
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 90%;
+	margin: 1%;
+	padding: 1%;
+	background-image: url('https://live.mrf.io/statics/i/ps/www.gizchina.com/wp-content/uploads/images/2019/11/24a53590-e03b-11e9-840f-fdc5b39eb020.jpg');
+	background-attachment: fixed;
+	background-size: 100%;
+	font-family: 'Segoe UI';
+	box-shadow: 2px 2px 8px #8c8888;
+	border-radius: 10px;
+	padding-bottom: 5%;
+}
+.art-ind> h1
+{
+	font-size: 40px;
+	color: #fff;
+	text-shadow: 2px 2px 4px #0d282d;
+
+}
+.sec-ind
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	width: 100%;
+
+}
+.div-ind
+{
+	display: flex;
+	flex-direction: column;	
+	background-color: #372f2fd1;
+	color: white;
+	width: 15%;
+	align-items: center;
+	padding: 1%;
+	box-shadow: 3px 3px 6px #423c3cc4;
+	border-radius: 10px;
+	border: 3px solid #c13636ab;
+}
+.div-ind > b
+{
+	text-align: center;
+	text-shadow: 2px 2px 4px #0d282d;
+	flex:1;
+	font-size: 130%;
+	display: flex;
+	align-items: center;
+}
+.div-ind > img
+{
+	width: 200px;
+	box-shadow: 1px 1px 5px #0000006b;
+	margin: 10%;
+}
+.div-ind > a
+{
+	text-decoration: none;
+	font-family: 'Segoe UI';
+	color: white;
+	transition: color 1s ,letter-spacing 1s ,scale 1S;
+	font-size: 120%;
+}
+.div-ind > a:hover
+{
+	color: #eadcdc;
+	letter-spacing: 0.2em;
+	scale: 1.1;
+
+}
+
+
+/*paiment*/
