@@ -1052,3 +1052,46 @@ background: linear-gradient(56deg, rgba(239,248,249,1) 19%, rgba(213,237,238,0.8
 
 
 /*paiment*/
+.paiment
+{
+	background-color: #ebfffa;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100vh;
+	justify-content: space-around;
+	font-family: 'Segoe UI';
+
+}
+.paiment>p
+{
+	font-size: 5vh;
+}
+.paiment>img
+{
+	width: 300px;
+	animation: rotation 3s infinite linear;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+.paiment>div
+{
+	width: 50vw;
+	height: 60vh;
+	background-image: url('img/money.gif');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+.paiment>a
+{
+	text-decoration: none;
+	box-shadow: 2px 2px 8px #8c8888;
+	font-family: 'Segoe UI';
+}

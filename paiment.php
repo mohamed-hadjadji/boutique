@@ -82,7 +82,8 @@ else
     		{
     		?>
     		<p id="endchargement">Comande validé : un mail de confirmation vous à été envoyé</p> 
-    		<a href="index.php">revenire à l'acceuil </a> 		
+            <div> </div>
+    		<a class="buttype" href="index.php">revenire à l'acceuil</a> 		
     		<?php
     		}
     		else
@@ -93,7 +94,9 @@ else
     	else
     	{
     		?>
-    		<p id="chargement">verification en cours ...</p>
+    		<p id="chargement">Verification en cours ... </p>
+            <img src="img/charg.png">
+            <h1>Un peu de patience nous verifions vos coordonées</h1>
     		<?php
     	}
     ?>
