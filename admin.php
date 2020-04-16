@@ -431,13 +431,21 @@
         ?>
       </aside>
   </main>
+  <footer class="footer">
+      <aside id="Copyright"><p> Copyright 2020 Coding School | All Rights Reserved | Project by Mohamed & Etienne.</p></aside>
+  </footer>
     <?php    
   }
   else
   {
-    echo"Vous n'avez pas le droit d'accés";
+    ?>
+     <div class="notcon">
+       <p>Vous n'avez pas le droit d'accés !!</p>
+     </div>
+  <?php
   }
 
   ?>
+  
   </body>
 </html>

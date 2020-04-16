@@ -4,14 +4,6 @@
 
    include("class.php");
 
-   if(isset($_POST['supan']))
-   {
-    sql("DELETE FROM `pannier` WHERE id_user=".$_SESSION['id']." && id_prod=".$_POST['supan']."");
-   }
-
-   $pannier=sql("SELECT id_prod,SUM(pannier.quantite),titre,prix,icon FROM `pannier` INNER JOIN `produits` ON id_prod=produits.id WHERE id_user=".$_SESSION['id']."&& valider=0 GROUP BY id_prod");
-   //var_dump($pannier);
-
    ?>
 
 <!DOCTYPE html>
@@ -31,8 +23,20 @@
         </header>
         <main class="mopan">
           <div class="cadpan">
-            <h1>Votre panier</h1>
+            
            <?php
+        if (isset($_SESSION['login']))
+        {
+          ?>
+          <h1>Votre panier</h1>
+          <?php
+          if(isset($_POST['supan']))
+           {
+            sql("DELETE FROM `pannier` WHERE id_user=".$_SESSION['id']." && id_prod=".$_POST['supan']."");
+           }
+
+           $pannier=sql("SELECT id_prod,SUM(pannier.quantite),titre,prix,icon FROM `pannier` INNER JOIN `produits` ON id_prod=produits.id WHERE id_user=".$_SESSION['id']."&& valider=0 GROUP BY id_prod");
+           //var_dump($pannier);
            if (!empty($pannier)) 
            {
              
@@ -43,6 +47,7 @@
               $ptotal=$p[3]*$p[1];
               $pantotal+=$ptotal;
             ?>
+          
           <section class="areap">
               <div class="esppan">
                 <div class="artpan">
@@ -134,7 +139,24 @@
             <?php }
            ?> 
              </section>
-         </div>
+           </div>
         </main>
+        <footer class="footer">
+            <aside id="Copyright"><p> Copyright 2020 Coding School | All Rights Reserved | Project by Mohamed & Etienne.</p></aside>
+        </footer>
+        <?php
+        }
+        else
+        {
+        
+       ?>
+        <div class="notcon">
+          <p>Veuillez vous connecter pour accéder à la page !</p>
+        </div>
+            <?php
+        }
+        ?>
+      
+        
     </body>
 </html>

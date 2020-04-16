@@ -81,9 +81,9 @@ else
     		if($_GET['msg']=="yes")
     		{
     		?>
-    		<p id="endchargement">Comande validé : un mail de confirmation vous à été envoyé</p> 
+    		<p id="endchargement">Commande validée : un mail de confirmation vous a été envoyé</p> 
             <div> </div>
-    		<a class="buttype" href="index.php">revenire à l'acceuil</a> 		
+    		<a class="buttype" href="index.php">Revenir à l'accueil</a> 		
     		<?php
     		}
     		else
@@ -94,9 +94,9 @@ else
     	else
     	{
     		?>
-    		<p id="chargement">Verification en cours ... </p>
+    		<p id="chargement">Vérification en cours ... </p>
             <img src="img/charg.png">
-            <h1>Un peu de patience nous verifions vos coordonées</h1>
+            <h1>Un peu de patience nous vérifions vos coordonnées</h1>
     		<?php
     	}
     ?>

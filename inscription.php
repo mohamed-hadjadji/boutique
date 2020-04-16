@@ -82,15 +82,21 @@
           </form>
         </article>
      </section>
+     <footer class="footer">
+      <aside id="Copyright"><p> Copyright 2020 Coding School | All Rights Reserved | Project by Mohamed & Etienne.</p></aside>
+    </footer>
     <?php
     }
     else 
     {
     ?>
-    <section id="notcon">
+    <div class="notcon">
       <p>Vous êtes déjà connecté impossible de s'inscrire !!</p>
-    </section>
+    </div>
         <?php
     }
     ?>
+    
+  </body>
+</html>
 

@@ -147,6 +147,7 @@ header{
 .proform{
 	display: flex;
 	justify-content: center;
+	margin-bottom: 100px;
 }
 
 #cadprof{
@@ -354,6 +355,7 @@ header{
 .mopan{
 	display: flex;
 	justify-content: center;
+	margin-bottom: 300px;
 }
 .cadpan{
 	background-color: rgba(255, 255, 255, 0.7);
@@ -579,7 +581,7 @@ border-radius: 20px;
 box-shadow: 5px 2px 8px #353535;
 width: 50%;
 padding: 40px;
-margin-bottom: 40px;
+margin-bottom: 65px;
 background-color: #9ab9a93d;
 }
 
@@ -1094,4 +1096,31 @@ background: linear-gradient(56deg, rgba(239,248,249,1) 19%, rgba(213,237,238,0.8
 	text-decoration: none;
 	box-shadow: 2px 2px 8px #8c8888;
 	font-family: 'Segoe UI';
+}
+
+.footer{
+	display: flex;
+	justify-content: center;
+	background-color: rgb(135,30,30);
+	height: 70px;
+	color: white;
+	font-family: 'Segoe UI';
+	font-size: 20px;
+}
+#Copyright{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.notcon{
+	display: flex;
+	justify-content: center;
+}
+.notcon p{
+	background-color:rgb(135,30,30); 
+	width: 40%;
+    color: white;
+    font-family: 'Segoe UI';
+	font-size: 30px;
+	padding: 40px;
 }
