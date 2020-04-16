@@ -154,6 +154,9 @@
            }
           ?> 
         </section>
+        <footer class="footer">
+            <aside id="Copyright"><p> Copyright 2020 Coding School | All Rights Reserved | Project by Mohamed & Etienne.</p></aside>
+        </footer>
 
     </body>
 </html>
