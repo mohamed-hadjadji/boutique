@@ -105,6 +105,10 @@
           <div id="cont-bout">
           <section id="res-bout">
             <?php
+            if (!empty($res)) 
+            {
+            
+            
               foreach ($res as $r) 
               {
               ?>
@@ -136,6 +140,13 @@
               </div>
               <?php  
               }
+          }
+          else
+          {
+          	?>
+          	<h3>Aucun resultat ne corespond à votre recherche...</h3>
+          <?php
+      	  }
             ?>
           </section>
           </div>
