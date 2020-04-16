@@ -878,13 +878,15 @@ background: linear-gradient(56deg, rgba(239,248,249,1) 19%, rgba(213,237,238,0.8
 	flex:5;
 	border: 3px solid #871e1e;
 	border-radius: 10px;
+	width: 65%;
+    height: 25vh;
 }
 .prod-bout>p
 {
 	
 	width: 90%;
 	text-align: justify;
-	font-size: 1vw;
+	font-size: 0.9vw;
 	display: flex;
 	justify-content: center;
 	margin: 0;
