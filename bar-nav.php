@@ -21,7 +21,6 @@
       <p class=""><a href="connexion.php">Connexion</a></p>
       <p class=""><a href="inscription.php">Inscription</a></p>
   </nav>
-    
       
 
     

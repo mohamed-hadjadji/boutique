@@ -21,7 +21,7 @@
 
         </header>
         <section>
-        	<?php 
+          <?php 
            $connexion = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
            $id = $_GET['id'];
 
@@ -31,7 +31,7 @@
            {
             $qtt= $p[6];
             ?>
-           	 
+             
                 <article class="espart">
                   <div id="icoart">
                     <img height='450' src="<?=$p[7]?>">
@@ -53,7 +53,7 @@
              
           <?php
            }
-        	?>  
+          ?>  
           <section class="espan">
               <article class="boutpan">
                 <form class="ajpanier" method="post">
@@ -108,7 +108,7 @@
       
         <section class="comment">
           <article class="sand">
-            	<h2>Votre Avis sur le Produit</h2>
+              <h2>Votre Avis sur le Produit</h2>
               <form action="produit.php?id=<?php echo $id ?>" method="post" id="avform">
                     <label>Poster un commentaire</label></br>
                     <textarea id="area" type="text" name="comment" rows="3" maxlength="100" cols="120"required></textarea></br>
@@ -120,10 +120,10 @@
           if (isset($_POST['submit']))
          { 
 
-         	$requeteuser = $connexion->query("SELECT * FROM utilisateurs WHERE login='".$_SESSION['login']."'");
+          $requeteuser = $connexion->query("SELECT * FROM utilisateurs WHERE login='".$_SESSION['login']."'");
             $resultat=$requeteuser->fetchAll();
 
-         	$avis= $_POST['comment'];
+          $avis= $_POST['comment'];
             $iduser =$resultat[0][0]; 
 
             $requeteavi = $connexion->query("INSERT INTO avis(commentaire, id_utilisateur, id_produit, date) VALUES ('$avis','$iduser','$id',NOW())");
@@ -134,12 +134,12 @@
         ?>
         </section>
         <section class="affavi">
-        	<?php
-        	$requetemes = $connexion->query("SELECT commentaire, avis.date, login, produits.id FROM avis INNER JOIN utilisateurs ON id_utilisateur= utilisateurs.id INNER JOIN produits ON id_produit = produits.id WHERE id_produit = $id ORDER BY avis.id DESC");
+          <?php
+          $requetemes = $connexion->query("SELECT commentaire, avis.date, login, produits.id FROM avis INNER JOIN utilisateurs ON id_utilisateur= utilisateurs.id INNER JOIN produits ON id_produit = produits.id WHERE id_produit = $id ORDER BY avis.id DESC");
 
-        	 foreach ($requetemes as $avis)
-        	 {
-        	 ?>
+           foreach ($requetemes as $avis)
+           {
+           ?>
           <article class="messa">
             <div id="user">
               <p>Posté le: <i><?=$avis[1]?></i></p>
@@ -151,8 +151,8 @@
 
           </article>
            <?php
-        	 }
-        	?> 
+           }
+          ?> 
         </section>
 
     </body>

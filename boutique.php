@@ -30,7 +30,9 @@
   } 
   if(isset($_POST['panier'])&&isset($_SESSION['id'])) 
   {
-      $testprod=sql("SELECT quantite FROM pannier WHERE id_prod=".$_POST['panier']." && id_user=".$_SESSION['id'].";");
+
+      $testprod=sql("SELECT quantite FROM pannier WHERE id_prod=".$_POST['panier']." && id_user=".$_SESSION['id']." && valider=0;");
+
                    
                     if(empty($testprod))
                     {
@@ -39,7 +41,9 @@
                     }
                     else
                     {
-                      sql("UPDATE pannier SET quantite= ".(1+$testprod[0][0])." WHERE id_prod=".$_POST['panier']." && id_user=".$_SESSION['id']."; ");
+
+                      sql("UPDATE pannier SET quantite= ".(1+$testprod[0][0])." WHERE id_prod=".$_POST['panier']." && id_user=".$_SESSION['id']."&& valider=0; ");
+
                       $testprod[0][0]++;
                     }
   }
@@ -52,28 +56,28 @@
     <head>
         <meta charset="UTF-8">
         <title>Notre Boutique</title>
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="style.css">
     </head>
-    <body class="">
+    <body class="body-bout">
         <header>
              
             <?php include ('bar-nav.php')?>
 
         </header>
-        <main>
+        <main id="main-bout">
           <div id="optionboutique">
             <form method="post" action="boutique.php" id="f-recherche">
-              <input type="text" name="req">
-              <input type="submit" name="rech">
+              <input type="text" name="req" placeholder="taper votre recherche ici">
+              <input type="submit" name="rech" class="buttype" value="Rechercher" >
             </form>
             <form method="post" action="boutique.php" id="f-option">
-               <label>Categorie :</label>
+               <label>Categorie :&nbsp;
                <select type="text" name='catego' required />
                     <option>Aucune</option>
                     <option>Téléphone</option>
                     <option>Accessoire</option>               
-                </select>
-               <label>Constructeur :</label>
+                </select></label>
+               <label>Constructeur :&nbsp;
                <select type="text" name='sous' required />
                     <option>AUCUN</option>
                     <option>SAMSUNG</option>                   
@@ -83,38 +87,44 @@
                     <option>WIKO</option>
                     <option>XIAOMI</option>
                     <option>SONY Xperia</option>
-                </select>
-               <label>Trie :</label>
+                </select></label>
+               <label>Trie :&nbsp;
                <select type="text" name='trie' required />
                     <option>Aucun</option>
                     <option>Prix croissant</option>
                     <option>Prix décroissant</option>
                     <option>Plus récents</option>               
-                </select>
-                <label>Prix supérieur à :</label>
-                  <input type="number" name="pr-sup"  min="0">
-                <label>Prix inférieur à :</label>
-                  <input type="number" name="pr-inf"  min="0">
-               <input type="submit" name="option">
+                </select></label>
+                <label>Prix supérieur à :&nbsp;
+                  <input type="number" name="pr-sup" step="50" min="0"></label>
+                <label>Prix inférieur à :&nbsp;
+                  <input type="number" name="pr-inf" step="50" min="50"></label>
+               <input type="submit" name="option" class="buttype">
             </form>
           </div>
+          <div id="cont-bout">
           <section id="res-bout">
             <?php
+            if (!empty($res)) 
+            {
+            
+            
               foreach ($res as $r) 
               {
               ?>
               <div class="prod-bout">
                 <h1 class="titre-prod" ><?=$r[1]?></h1>
                 <img src="<?=$r[7]?>">
-                <p>Description:<br><?=$r[2]?></p>
-                <h>prix: <?=$r[3]?>€</h>
-                <a href="produit.php?id=<?=$r[0]?>">voir plus</a>
+                <p>Description :<br><?=$r[2]?></p>
+                <h>Prix : <?=$r[3]?>€</h>
+                <section>
+                <a class="buttype" href="produit.php?id=<?=$r[0]?>">voir plus</a>
                 <?php
                   if(isset($_SESSION['id']))
                   {
                     ?>
                     <form method="post">
-                      <button type="submit" name="panier" value="<?=$r[0]?>">ajouter au pannier</button>
+                      <button class="buttype" type="submit" name="panier" value="<?=$r[0]?>">ajouter au pannier</button>
                     </form>
 
                   <?php
@@ -126,12 +136,23 @@
                     }
                   }
                 ?>
-
+                </section>
               </div>
               <?php  
               }
+          }
+          else
+          {
+          	?>
+          	<h3>Aucun resultat ne corespond à votre recherche...</h3>
+          <?php
+      	  }
             ?>
           </section>
+          </div>
         </main>
+        <footer class="footer">
+            <aside id="Copyright"><p> Copyright 2020 Coding School | All Rights Reserved | Project by Mohamed & Etienne.</p></aside>
+        </footer>
     </body>
 </html>

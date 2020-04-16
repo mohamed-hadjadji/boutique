@@ -77,18 +77,23 @@
 			    </article>
 				
 			</section>
+			</main>
+			<footer class="footer">
+                <aside id="Copyright"><p> Copyright 2020 Coding School | All Rights Reserved | Project by Mohamed & Etienne.</p></aside>
+            </footer>
 
 		    <?php
             }
 		     else 
 		    {
 		    ?>
-		    <section class="notcon">
+		    <div class="notcon">
 		      <p>Veuillez vous connecter pour accéder à la page !</p>
-		    </section>
+		    </div>
 		        <?php
 		    }
 		    ?>
-		</main>
+		
+
 	</body>
 </html>
