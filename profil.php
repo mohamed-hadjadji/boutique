@@ -2,7 +2,7 @@
    session_start();
 
   include("class.php");
-  
+  include("fonction.php");
    ?>
 
    <!DOCTYPE html>
@@ -77,6 +77,70 @@
 			    </article>
 				
 			</section>
+			<section class="sectbo">
+                <form  class= 'buthis' method='POST'>
+                    <input type="submit" value="Historique de mes commandes" name="histco">
+                </form>
+            </section>
+		</main>
+		<main class="mes-com">
+            
+         <?php
+        if(isset($_POST['histco']))
+       {
+         ?>
+			<section class="histori">
+			
+            <?php
+
+           $commande=sql("SELECT livraison.id,date,status,cmd,total,utilisateurs.id FROM `livraison` INNER JOIN `utilisateurs` ON id_user = utilisateurs.id WHERE id_user = '".$_SESSION['id']."' LIMIT 10 ");
+         if (!empty($commande))
+         {
+
+            foreach ($commande as $l) 
+          {
+          	?>
+            <p class="dateco"><b>Commande de <i><?=$l[1]?></i></b></p>
+          	<?php
+           $com=json_decode($l[3]);
+
+             foreach ($com as $art) 
+                {
+                  $titre=sql("SELECT titre,icon FROM produits WHERE id =".$art->id."");
+                  ?>
+                  <article id="art-com">
+                    <div id="phoart">               
+                         <img height='70' src="<?=$titre[0][1] ?>">
+                    </div>
+                    <div id="art-inf">
+		                <b><?=$titre[0][0] ?></b>
+		                <b>Prix: <?=$art->prix ?> €</b>
+		                <b>Quantité: <?=$art->quantite ?></b>
+                    </div>
+                  </article>
+                  <?php
+                }
+                ?>
+	          	<article id="">
+	              
+	              <p class="">Total achat: <b><?=$l[4]?> €</b></p>
+	           </article>
+	           <?php  
+             }
+         }
+         else
+         {
+         	?>
+              <article id="pacom">
+                   <p><b>Aucune commande pour l'instant</b></p>
+              </article>
+            <?php 
+         }
+      }
+            ?>
+
+
+            </section>
 			</main>
 			<footer class="footer">
                 <aside id="Copyright"><p> Copyright 2020 Coding School | All Rights Reserved | Project by Mohamed & Etienne.</p></aside>
