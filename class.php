@@ -88,7 +88,7 @@ class user
     }
     public function update()
     {
-
+      $connexion =  mysqli_connect("localhost","root","","boutique");
             $login = $_POST['login'];
             $passe = password_hash($_POST["mdp"], PASSWORD_DEFAULT, array('cost' => 12));
             $adresse = $_POST['adresse'];
