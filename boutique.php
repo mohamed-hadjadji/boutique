@@ -13,6 +13,7 @@
     else
     {
       //echo"plein";
+      $_POST['req']=addslashes($_POST['req']);
       $res=recherche($_POST['req']);
     }
   }
