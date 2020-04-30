@@ -9,9 +9,9 @@
                    }
                 }
    include('fonction.php');
-   $dprod=sql("SELECT * FROM `produits` ORDER BY id LIMIT 5");
-   $dtel=sql("SELECT * FROM `produits` WHERE categorie = 'Téléphone' ORDER BY id LIMIT 5 ");
-   $dacc=sql("SELECT * FROM `produits` WHERE categorie ='Accessoire' ORDER BY id LIMIT 5 ");
+   $dprod=sql("SELECT * FROM `produits` ORDER BY id DESC LIMIT 5");
+   $dtel=sql("SELECT * FROM `produits` WHERE categorie = 'Téléphone' ORDER BY id DESC LIMIT 5 ");
+   $dacc=sql("SELECT * FROM `produits` WHERE categorie ='Accessoire' ORDER BY id DESC LIMIT 5 ");
   // var_dump($dprod);
 ?>
 <html>
